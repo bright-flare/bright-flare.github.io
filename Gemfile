@@ -4,6 +4,10 @@ source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3.0"
 gem "jekyll-theme-chirpy", "~> 7.0", ">= 7.0.1"
+gem "webrick", "~> 1.7"
+gem "csv"
+gem "logger"
+gem "base64"
 
 group :jekyll_plugins do
   gem "jekyll-paginate"
