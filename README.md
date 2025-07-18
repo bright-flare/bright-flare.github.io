@@ -1,84 +1,94 @@
-<!-- markdownlint-disable-next-line -->
 <div align="center">
 
-  <!-- markdownlint-disable-next-line -->
-  # Chirpy Jekyll Theme
-
-  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
-
-  [![CI](https://img.shields.io/github/actions/workflow/status/cotes2020/jekyll-theme-chirpy/ci.yml?logo=github)][ci]&nbsp;
-  [![Codacy Badge](https://img.shields.io/codacy/grade/4e556876a3c54d5e8f2d2857c4f43894?logo=codacy)][codacy]&nbsp;
-  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy?color=goldenrod)][license]&nbsp;
-  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?&logo=RubyGems&logoColor=ghostwhite&label=gem&color=orange)][gem]&nbsp;
-  [![Open in Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-deepskyblue?logo=linuxcontainers)][open-container]
-
-  [**Live Demo** →][demo]
-
-  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
+   # bright-flare blog
 
 </div>
 
-## Features
+<br>
 
-- Dark Theme
-- Localized UI language
-- Pinned Posts on Home Page
-- Hierarchical Categories
-- Trending Tags
-- Table of Contents
-- Last Modified Date
-- Syntax Highlighting
-- Mathematical Expressions
-- Mermaid Diagrams & Flowcharts
-- Dark Mode Images
-- Embed Media
-- Comment Systems
-- Built-in Search
-- Atom Feeds
-- PWA
-- Web Analytics
-- SEO & Performance Optimization
+이 저장소는 [Jekyll](https://jekyllrb.com/)과 [Chirpy 테마](https://github.com/cotes2020/jekyll-theme-chirpy)를 기반으로 한 개인 블로그입니다.
 
-## Documentation
+<br>
 
-To learn how to use, develop, and upgrade the project, please refer to the [Wiki][wiki].
+## 🛠️ Project settings
 
-## Contributing
+<br>
 
-Contributions (_pull requests_, _issues_, and _discussions_) are what make the open-source community such an amazing place
-to learn, inspire, and create. Any contributions you make are greatly appreciated.
-For details, see the "[Contributing Guidelines][contribute-guide]".
+### 1. Git clone
 
-## Credits
+```sh
+git clone https://github.com/bright-flare/bright-flare.github.io.git
+```
 
-### Contributors
+### 2. Ruby 및 Bundler 설치
 
-Thanks to [all the contributors][contributors] involved in the development of the project!
+**Homebrew**로 Ruby 설치 (예시: rbenv 사용)
 
-[![all-contributors](https://contrib.rocks/image?repo=cotes2020/jekyll-theme-chirpy&columns=16)][contributors]
-<sub> — Made with [contrib.rocks](https://contrib.rocks)</sub>
+```sh
+brew install rbenv
+rbenv install 3.4.4
+rbenv global 3.4.4
+eval "$(rbenv init -)"
+```
 
-### Third-Party Assets
+Bundler 설치
+```sh
+gem install bundler
+```
 
-This project is built on the [Jekyll][jekyllrb] ecosystem and some [great libraries][lib], and is developed using [VS Code][vscode] as well as tools provided by [JetBrains][jetbrains] under a non-commercial open-source software license.
+### 3. 의존성 설치
 
-The avatar and favicon for the project's website are from [ClipartMAX][clipartmax].
+```sh
+bundle install
+```
 
-## License
+### 4. 로컬 서버 실행
 
-This project is published under [MIT License][license].
+```sh
+bundle exec jekyll serve
+```
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[ci]: https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml?query=event%3Apush+branch%3Amaster
-[codacy]: https://app.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
-[license]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE
-[open-container]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/cotes2020/jekyll-theme-chirpy
-[jekyllrb]: https://jekyllrb.com/
-[clipartmax]: https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/
-[demo]: https://cotes2020.github.io/chirpy-demo/
-[wiki]: https://github.com/cotes2020/jekyll-theme-chirpy/wiki
-[contribute-guide]: https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/docs/CONTRIBUTING.md
-[contributors]: https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors
-[lib]: https://github.com/cotes2020/chirpy-static-assets
-[vscode]: https://code.visualstudio.com/
-[jetbrains]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
+- 실행 후, 브라우저에서 [http://localhost:4000](http://localhost:4000) 접속
+
+### 5. (선택) 언어/테마 등 추가 설정
+
+- `_config.yml` 파일에서 사이트 정보, 언어, 테마 등을 원하는 대로 수정할 수 있습니다.
+
+---
+
+<br>
+
+## 📁 주요 폴더 구조
+
+- `_posts/` : 블로그 포스트 파일
+- `_data/` : 사이트 데이터 (저자, 언어, 미디어 등)
+- `_includes/` : 재사용 가능한 HTML 조각
+- `_layouts/` : 레이아웃 템플릿
+- `_sass/` : 스타일(SCSS) 파일
+- `assets/` : 이미지, JS, CSS 등 정적 파일
+
+<br>
+
+## 📝 블로그 포스트 작성법
+
+1. `_posts/` 폴더에 `YYYY-MM-DD-제목.md` 형식으로 파일 생성
+2. 파일 상단에 YAML Front Matter 추가
+   ```yaml
+   ---
+   title: "포스트 제목"
+   date: YYYY-MM-DD HH:MM:SS +0900
+   categories: [카테고리]
+   tags: [태그1, 태그2]
+   ---
+   ```
+3. 본문 작성
+
+<br>
+
+## 📚 참고 자료
+
+- [Jekyll 공식 문서](https://jekyllrb.com/docs/)
+- [Chirpy 테마 문서](https://chirpy.cotes.page/)
+
+---
+
