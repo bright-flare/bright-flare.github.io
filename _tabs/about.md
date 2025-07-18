@@ -1,9 +1,8 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 1
 ---
-
 
 ## 👋 About Me
 
@@ -12,16 +11,16 @@ order: 4
 
 ---
 
-안녕하세요!  
+안녕하세요 😊  
 
 저는 **심현섭**입니다. 제 이름의 뜻은 
 
-- **현(炫)** — 빛날 현,
+- **현(炫)** — 밝을 현,
 - **섭(燮)** — 불꽃 섭,
 
 저는 저 자신을 **‘밝은불꽃’**, 영어 이름으로는 **‘Bright Flare’**라고 소개합니다.  
-부모님이 지어주신 이름이어서 그런지, 성격도 이름을 닮았습니다.  
-**밝고 긍정적이며, 열정적인** 성격으로 사람과 일 모두에 진심을 다하려 노력합니다.
+부모님이 지어주신 이름이어서 그런지, 저의 이름을 참 좋아합니다. 그래서 그런지 성격도 이름을 닮았습니다.  
+**밝고 긍정적이며, 때로는 불꽃처럼 열정적인** 성격으로 사람과 일 모두에 진심을 다하려 노력합니다.
 
 --- 
 
@@ -36,10 +35,9 @@ order: 4
 ## 🛠️ Tech Stack & Interests
 - **Languages**: Java, Kotlin, Javascript
 - **Frameworks**: Spring Framework, Spring Boot, Spring Cloud, JPA, QueryDSL
-- **Dev Tools**: IntelliJ IDEA, Gradle, Git
 - **Dev Ops**: Teamcity, Docker
-- **Architectures**: Clean Architecture, CQRS
-- **Interests**: DDD, OOP, RESTful API
+- **Interests**: DDD, OOP, RESTful API, Clean Architecture, Event-Driven Architecture, Microservices
+- **Dev Tools**: IntelliJ IDEA, Kiro, Cursor, VS code, Gradle, Git
 
 ---
 
@@ -53,7 +51,8 @@ order: 4
 ## 📫 Contact
 - GitHub: [github.com/bright-flare](https://github.com/bright-flare)
 - Email: orolsyeo@gmail.com
-- Blog: [yourblog.dev](https://yourblog.dev)
+- Blog: [bright-flare.github.io](https://bright-flare.github.io/)
+- Linkedin: [Shim-hyun-sub](https://www.linkedin.com/in/hyunsub-shim-4258ba27a/)
 
 ---
 
