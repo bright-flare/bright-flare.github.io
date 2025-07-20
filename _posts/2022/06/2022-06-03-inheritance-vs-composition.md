@@ -5,11 +5,10 @@ author: bright-flare
 date: 2022-06-03 19:33:00 +0900
 categories: [OOP]
 tags: [Java, OOP]
-pin: true
 math: true
 mermaid: true
 image:
-  path: /assets/img/post/inheritance_vs_composition/composition.png
+  path: /assets/img/post/2022/inheritance_vs_composition/composition.png
 ---
 
 ## 상속의 단점
@@ -72,13 +71,13 @@ public void inheritSetTest() {
 <hr>
 
 ## 원인
-![HashSet 상속구조](/assets/img/post/inheritance_vs_composition/diagram.png)
+![HashSet 상속구조](/assets/img/post/2022/inheritance_vs_composition/diagram.png)
 
 `HashSet`은 위와 같은 상속 구조를 가지고 있다.
 
 예제 코드에서 호출하는 `addAll()` 메소드는 `AbstractCollection` 클래스의 메소드인데 `addAll()` 메소드는 내부적으로 `add()` 메소드를 사용하는 방식으로 구현 되어있다.
 
-![addAll()](/assets/img/post/inheritance_vs_composition/code.png)
+![addAll()](/assets/img/post/2022/inheritance_vs_composition/code.png)
 
 `InheritSet` 의 `addAll()` 메소드를 호출하면 `addCount`에 원소의 size인 4를 더하고 `super.addAll()`를 호출하는데, `addAll()` 메소드는 `for`문에서 재정의 한 `InheritSet` 의 `add()` 메소드를 호출하여 `addCount`는 4번 중복되어 더해져 8이라는 값을 갖게 되었다.
 
