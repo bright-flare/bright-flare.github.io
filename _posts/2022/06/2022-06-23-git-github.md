@@ -69,45 +69,7 @@ git config --global init.defaultBranch main
 <br>
 <hr>
 
-### ✍️ commit 메세지, 작성자 수정하기
-```bash
-# 📝 commit 메세지 수정하기
-git commit --amend -m "메세지 수정하기" 
-```
-
-```bash
-# 📝 commit 작성자 수정하기
-git commit --amend --author="bright-flare <orolsyeo@gmail.com>"
-```
-
-<br>
-<hr>
-
-### ☁️ 원격 저장소와 연결하기
-```bash
-# 📝 여기서 origin은 원격 repository의 별칭이다.
-# 🚀 local git과 원격 저장소(GitHub)의 repository와 연결한다.
- 
-git remote add origin https://github.com/github-user/github-repository.git
-```
-
-
-```bash
-# 💎 github-user의 github-repository 저장소 복제하기
-
-git clone https://github.com/github-user/github-repository.git
-```
-
-```bash
-# 👀 현재 local 저장소와 연결된 원격 저장소 url 확인
-
-git remote -v
-```
-
-<br>
-<hr>
-
-### 🧑🏻‍💻 파일 상태 다루기,상태 확인하기 원격 저장소에 올리기
+### 🧑🏻‍💻 파일 상태 다루기, 상태 확인하기 
 
 ```bash 
 # 👀 현재 상태 확인 commit할 파일이 있는지 add할 파일이 있는지
@@ -134,6 +96,16 @@ git commit -m "commit message"
 ```
 
 ```bash
+# 📝 commit 메세지 수정하기
+git commit --amend -m "메세지 수정하기" 
+```
+
+```bash
+# 📝 commit 작성자 수정하기
+git commit --amend --author="bright-flare <orolsyeo@gmail.com>"
+```
+
+```bash
 # 👀 commit log 확인하기
 
 git log
@@ -152,8 +124,36 @@ git reset --hard 91f61e82b0175d49c4fceda57d8b9133432f124f
 git checkout -- test.java
 ```
 
+<br>
+<hr>
+
+### ☁️ 원격 저장소와 연결하기
 ```bash
-# 🚀 commit한 내용들을 원격 저장소 main branch에 밀어넣기.
+# 📝 여기서 origin은 원격 repository의 별칭이다.
+# 🚀 local git과 원격 저장소(GitHub)의 repository와 연결한다.
+ 
+git remote add origin https://github.com/github-user/github-repository.git
+```
+
+```bash
+# 💎 github-user의 github-repository 저장소 복제하기
+
+git clone https://github.com/github-user/github-repository.git
+```
+
+```bash
+# 👀 현재 local 저장소와 연결된 원격 저장소 url 확인
+
+git remote -v
+```
+
+<br>
+<hr>
+
+### 🚀 원격 저장소에 올리기
+
+```bash
+# commit한 내용들을 원격 저장소 main branch에 밀어넣기.
 
 git push origin main
 ```
