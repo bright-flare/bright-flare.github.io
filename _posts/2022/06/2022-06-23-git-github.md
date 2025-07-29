@@ -69,6 +69,20 @@ git config --global init.defaultBranch main
 <br>
 <hr>
 
+### ✍️ commit 메세지, 작성자 수정하기
+```bash
+# 📝 commit 메세지 수정하기
+git commit --amend -m "메세지 수정하기" 
+```
+
+```bash
+# 📝 commit 작성자 수정하기
+git commit --amend --author="bright-flare <orolsyeo@gmail.com>"
+```
+
+<br>
+<hr>
+
 ### ☁️ 원격 저장소와 연결하기
 ```bash
 # 📝 여기서 origin은 원격 repository의 별칭이다.
