@@ -147,6 +147,12 @@ git clone https://github.com/github-user/github-repository.git
 git remote -v
 ```
 
+```bash
+# 👀 원격 저장소 주소 변경하기.
+
+git remote set-url origin https://github-user@github.com/github-user/github-repository.git
+```
+
 <br>
 <hr>
 
