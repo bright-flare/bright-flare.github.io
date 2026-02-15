@@ -97,6 +97,3 @@ ls -la ~/.openclaw/workspace
   - pairing code 승인 여부 확인
 
 ---
-
-이 글은 "빠르게 설치 + 바로 검증"에 초점을 둔 버전입니다.
-다음 글에서는 OpenClaw 세션 구조와 운영 팁까지 이어서 정리해볼게요.
