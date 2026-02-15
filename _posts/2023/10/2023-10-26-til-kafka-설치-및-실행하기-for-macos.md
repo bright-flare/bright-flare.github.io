@@ -83,4 +83,3 @@ create test meaaage 2
 ---
 
 📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
-

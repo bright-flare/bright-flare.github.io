@@ -22,11 +22,11 @@ public class CustomerInterceptore implements ProducerInterceptor {
     }  
     @Override  
     public void close() {  
-	  ...
+    ...
     }  
     @Override  
     public void configure(Map<String, ?> configs) {  
-	  ...
+    ...
     }}
 ```
 
@@ -38,7 +38,7 @@ public class CustomerInterceptore implements ProducerInterceptor {
 ## onAcknowledgement()
 
 - broker가 보낸 응답을 받았을 때 호출된다.
-- broker가 보낸 응답을 변경할 수는 없다.정보를 read만 가능하다.
+- broker가 보낸 응답을 변경할 수는 없다.정보를 read만 가능하다.
 
 ## 사용 사례
 
@@ -50,4 +50,3 @@ public class CustomerInterceptore implements ProducerInterceptor {
 ---
 
 📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
-

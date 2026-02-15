@@ -31,7 +31,7 @@ try {
 ```java
 ProducerRecord<String, String> record = new ProducerRecord<>("topic", "key", "value");  
 try {  
-	//recordMetadata 활용
+  //recordMetadata 활용
     RecordMetadata recordMetadata = kafkaProducer.send(record).get();    
 } catch (Exception e) {  
     e.printStackTrace();  
@@ -39,8 +39,8 @@ try {
 ```
 
 - 응답이 올 때까지 대기하기위해 `Future.get()` 메서드를 사용한다.
-	- 에러가 발생하지 않을 경우 `RecordMetadata` 객체를 return한다.
-	- 에러가 발생할 경우 예외를 발생시킨다.
+  - 에러가 발생하지 않을 경우 `RecordMetadata` 객체를 return한다.
+  - 에러가 발생할 경우 예외를 발생시킨다.
 - 동기적으로 메세지를 전송할 경우 전송을 요청하는 스레드는 브로커가 쓰기 요청에 응답하기까지 걸리는 2ms ~ 최대 몇초 까지 기다려야 한다.
 - 메세지를 전송하는 동안 다른 메세지를 전송할 수도 없다.
 - 처리량이 낮아진다 -> 성능이 낮아진다.
@@ -55,19 +55,18 @@ kafkaProducer.send(record, (recordMetadata, e) -> {
     if (e != null) {  
         e.printStackTrace();  
     }  
-    // do something
+    // do something
 });
 ```
 
 - callback 함수와 함께 send() 메서드를 호출하면 카프카 브로커로부터 응답을 받는 시점에서 자동으로 callback 함수가 호출된다.
 - 메세지를 비동기적으로 전송하고 error를 처리하는 경우를 위해 producer는 record를 전송할 떄 callback을 지정할 수 있도록 한다.
 - callback을 사용하려면 `org.apache.kafka.clients.producer.Callback` interface를 구현하는 Class가 필요하다.
-	- 간단한 함수라면 lambda 표현식으로 처리해도 될듯
+  - 간단한 함수라면 lambda 표현식으로 처리해도 될듯
 
-💡💡 callback은 Producer의 main thread에서 실행된다. 그렇기때문에 callback 안에서 blocking 작업을 수행하는 것은 권장되지 않는다. 대신 blocking 작업을 동시에 수행하는 다른 thread를 사용하도록 하자.
+> 💡 callback은 Producer의 main thread에서 실행된다. 그렇기때문에 callback 안에서 blocking 작업을 수행하는 것은 권장되지 않는다. 대신 blocking 작업을 동시에 수행하는 다른 thread를 사용하도록 하자.
 그렇지 않으면 Producer가 지연될 수 있다 !!
 
 ---
 
 📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
-

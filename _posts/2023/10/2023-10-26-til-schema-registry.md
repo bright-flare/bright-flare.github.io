@@ -22,4 +22,3 @@ Kafka 에서 Avro사용시 레코드 각각에 전체 스키마를 저장해야 
 ---
 
 📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
-
