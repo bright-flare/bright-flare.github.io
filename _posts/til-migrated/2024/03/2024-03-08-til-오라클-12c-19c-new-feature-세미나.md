@@ -1,0 +1,86 @@
+---
+title: "오라클 12c ~ 19c new feature 세미나"
+date: 2024-03-08 00:00:00 +0900
+categories: [seminar, oracle]
+tags: [TIL, migration]
+description: "TIL에서 마이그레이션한 문서: seminar/oracle/오라클 12c ~ 19c new feature 세미나.md"
+---
+## feature
+- 19c 멀티 데이터 스토어를 지원한다.
+	- key-value, file, 정형화된 데이터 등등 모두 oracle 내부적으로 다양한 스토리지를 통해 적재하며, 사용자는 sql 쿼리문으로 다룰 수 있다.
+- rownum 대체 키워드 등장 !
+	- paging처리시에 rownum ~ order by 절을 감싸는 inline 쿼리가 필요없다.
+	- offset 4 rows fetch next 4 rows only 한줄로 처리 가능  !
+- count(distinct A column) 대체 등장
+	- 기존에 사용하던 이 함수는 performance가 좋지 않았음.
+	- approx_count_distinct : approx 대략적인 건수를 집계할 때 사용가능하다.
+	- 미세한 편차가 있으며, 대략적인 집계를 위한 함수다.
+	- 메모리 효율성 증가하여 퍼포먼스가 좋아짐.
+	- 몇천만건 단위 이상일 때 정확도가 높아짐.
+- Native left outer join 두번 조인 가능.
+- Lateral View
+- Partial index
+	- Table Expandtion
+- Improved Defaults
+	- 시퀀스 객체 생성해놓고 auto increaments 처럼 값 증가시 시퀀스를 사용하여 증가하게 처리 가능.
+	- mysql identity 처럼 identity 값을 사용 가능하다.
+		- identity는 cache 기능이 없어서 소규모 작은 시스템에서 사용하기 적합하고 값을 변경하지 못한다.
+- Increased Size Limit
+	- 12c 부터 varchar2/nvarchar2 데이터 타입 길이를 32K 까지 사용 가능하다. 기존 4000byte 까지였음.
+	- 4000 byte를 넘어가면 해당 컬럼의 데이터는 out of line lob(외부 lob 저장소)에 저장한다. 따라서 access시에 퍼포먼스가 저하될 수 있음.
+- Real time MView
+	- MView 가 Base테이블과 동기화가 되지 않더라도 MView log table과 union해서 fetch한 결과를 가져오기 때문에 Refresh 없는 real time MView를 사용 가능하다.
+- Listagg
+	- overflow 키워드를 통해서 4000byte 초과하는 결과는 생략 가능하다.
+	- 기존에는 4000byte가 넘어가면 에러가 발생했었음.
+- Data Conversion and Vanlidation
+	- 기존 12.2c 버전 이전에는 fetch할 때 형변환 에러가 발생했었음.
+	- ON CONVERSION ERROR 키워드를 통해 형변환 에러가 발생할 경우 대체 값을 추출할 수 있음.
+	- where절의 경우 VALIDATE_CONVERSION 함수를 사용하여 형변환이 가능한 데이터만 fetch하게할 수 있음.
+- Top-N Queries approximate aggregation (18c 이상)
+	- 탑 N 쿼리에 대한 대략적(approximate)인 검색결과를 fetch할 때 사용하기 적합하다.
+	- APPROX 접두어를 붙여주는 함수들을 사용하여 쿼리 속도도 빠르고 정확도도 높다.
+		- count, sum, rank
+	- max_err 키워드를 함께 사용하면 실제 데이터와 몇건 차이가 나는지 조회 가능하다.
+- Group by 부하 감소
+	- 특정 컬럼을 group by절에서 제외하고 원하는 컬럼만 뽑고 싶은 경우 any_value() 사용시 집계 부하가 감소한다.
+- Json 지원기능 
+	- 19c 이상 버전에는 더 강력한 기능이 많음.
+	- 데이터 출력시 asterisk 사용 가능 (19c)
+	- json_mergepatch() 을 사용해서 JSON 특정 key를 변경할 수 있다.
+	- json index를 지원한다.
+		- functional index의 형태로 지원한다.
+	- json array를 search하는 index도 있음.
+	- json을 지원하는 function이 매우 많다. 약 30개
+	- json file, 이기종 db에 저장하여 사용하는 것 보다는 빠르지만 rdb의 index처리된 컬럼을 fetch하는것 보다는 느리다. json은 column size가 기본적으로 크기때문에 느릴 수 밖에 없음.
+- Private Temp table (18c)
+	- 세션에서만 존재하는 임시 테이블 사용가능.
+	- 같은 테이블명이라고 할지라도 세션, transaction마다 테이블 layout을 다르게 설정할 수 있음.
+	- ORA$PTT_ 로 시작
+- Scalable Extend Sequence (18c)
+	- hot block 문제를 제거하기 위해서 생긴 기능 
+- Memoptimizes Rowstore
+	- fast lookup
+		- 사용자 인증 등 빠른 data lookup 최적화
+		- 테이블 생성시 memoptimize for read 키워드를 사용하면 단건 acces에 최적화된 테이블을 생성 가능하다.
+		- pk를 in memory hash index화 하여 memory에 적재된 row에 fetch한다.
+		- 작은 테이블들을 memory에 올려서 사용하여 단건 데이터에 fetch하는데에 적합하다.
+	- fast ingest
+		- 건건히 데이터를 자주 끊임없이 insert할 때 oracle에서 가장빠른 방법.
+		- IOT transaction에 적합한 방법임.
+		- 고빈도 insert처리 최적화.
+		- 기본적으로 발생하는 다수 insert 작업을 메모리에 올려두었다가 disk에 저장함.
+			- 때문에 100퍼센트 정합성이 필요한 데이터를 다루는데에 사용하는것은 정확하지 않음.
+			- 덕분에 commit부하가 발생하지않음.
+			- 데이터 유실 가능성 있음.
+		- 센서, 실시간 지역정보 등을 사용하는데에 적합함.
+- Oracle Bolckchain Table
+	- 데이터 변조 불가능한 테이블이다.
+- 개발자를 위한 SQL 실시간 모니터링 기능
+	- V$ALL_ prefix로 테이블이 생긴게 몇개 있음.
+		- V$ALL_SQL_MONITOR
+		- V$ALL_SQL_PLAN_MONITOR
+		- V$ALL_SQL_PLAN
+		- V$ALL_ACTIVE_SESSION_HISTORY
+	- 위 테이블들을 통해서 모든 사용자 계정은 모니터링, 튜닝 정보등을 조회할 수 있다.
+	- 실행계획이 아닌 실행계획을 토대로한 실행결과에서 문제가되는 지점을 파악할 수 있다.

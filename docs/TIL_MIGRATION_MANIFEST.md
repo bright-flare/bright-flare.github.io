@@ -1,0 +1,77 @@
+# TIL Migration Manifest
+
+- AWS/AWS Lambda.md -> _posts/til-migrated/2024/06/2024-06-16-til-aws-lambda.md
+- AWS/CLI.md -> _posts/til-migrated/2024/05/2024-05-09-til-cli.md
+- OOP/DDD/도메인주도개발-시작하기/1. 도메인모델시작하기.md -> _posts/til-migrated/2024/06/2024-06-16-til-1-도메인모델시작하기.md
+- OOP/DDD/도메인주도개발-시작하기/2. 아키텍처개요.md -> _posts/til-migrated/2024/06/2024-06-29-til-2-아키텍처개요.md
+- OOP/DDD/도메인주도개발-시작하기/ui,application.md -> _posts/til-migrated/2024/08/2024-08-11-til-ui-application.md
+- OOP/design-pattern/Decorator.md -> _posts/til-migrated/2025/03/2025-03-10-til-decorator.md
+- OOP/responsibility-driven-design.md -> _posts/til-migrated/2025/05/2025-05-03-til-responsibility-driven-design.md
+- docker/redis/docker redis-cluster 구축.md -> _posts/til-migrated/2023/11/2023-11-28-til-docker-redis-cluster-구축.md
+- git/git.md -> _posts/til-migrated/2021/09/2021-09-01-til-git.md
+- git/github-ssh-by-user.md -> _posts/til-migrated/2025/04/2025-04-25-til-github-ssh-by-user.md
+- java/9-21.md -> _posts/til-migrated/2025/03/2025-03-09-til-9-21.md
+- java/GarbageCollection.md -> _posts/til-migrated/2022/05/2022-05-17-til-garbagecollection.md
+- java/LTS.md -> _posts/til-migrated/2022/05/2022-05-17-til-lts.md
+- jpa/Eaget,Lazy loading.md -> _posts/til-migrated/2022/03/2022-03-03-til-eaget-lazy-loading.md
+- jpa/EntityManagerFactory,EntityManager.md -> _posts/til-migrated/2022/02/2022-02-14-til-entitymanagerfactory-entitymanager.md
+- jpa/Persistence context.md -> _posts/til-migrated/2021/12/2021-12-20-til-persistence-context.md
+- jpa/Proxy.md -> _posts/til-migrated/2022/02/2022-02-17-til-proxy.md
+- jpa/sql-mapper.md -> _posts/til-migrated/2022/02/2022-02-14-til-sql-mapper.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Application 설계 초기의 발행-구독 시스템 및 문제.md -> _posts/til-migrated/2023/10/2023-10-26-til-application-설계-초기의-발행-구독-시스템-및-문제.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Batch.md -> _posts/til-migrated/2023/10/2023-10-26-til-batch.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Broker, Cluster.md -> _posts/til-migrated/2023/10/2023-10-26-til-broker-cluster.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Kafka 설치 및 실행하기 for macos.md -> _posts/til-migrated/2023/10/2023-10-26-til-kafka-설치-및-실행하기-for-macos.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Kafka 소개.md -> _posts/til-migrated/2023/10/2023-10-26-til-kafka-소개.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Kafka를 사용하는 이유.md -> _posts/til-migrated/2023/10/2023-10-26-til-kafka를-사용하는-이유.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Kafka의 기원.md -> _posts/til-migrated/2023/10/2023-10-26-til-kafka의-기원.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Message.md -> _posts/til-migrated/2023/10/2023-10-26-til-message.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/MirrorMaker.md -> _posts/til-migrated/2023/10/2023-10-26-til-mirrormaker.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Producer, Consumer.md -> _posts/til-migrated/2023/10/2023-10-26-til-producer-consumer.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Schema.md -> _posts/til-migrated/2023/10/2023-10-26-til-schema.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Stream.md -> _posts/til-migrated/2023/10/2023-10-26-til-stream.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/Zookeeper.md -> _posts/til-migrated/2023/10/2023-10-26-til-zookeeper.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/다중 컨슈머.md -> _posts/til-migrated/2023/10/2023-10-26-til-다중-컨슈머.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/다중 프로듀서.md -> _posts/til-migrated/2023/10/2023-10-26-til-다중-프로듀서.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/디스크 기반 보존.md -> _posts/til-migrated/2023/10/2023-10-26-til-디스크-기반-보존.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/또 다른 문제.md -> _posts/til-migrated/2023/10/2023-10-26-til-또-다른-문제.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/메세지 발행-구독 시스템으로 개선.md -> _posts/til-migrated/2023/10/2023-10-26-til-메세지-발행-구독-시스템으로-개선.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/토픽과 파티션.md -> _posts/til-migrated/2023/10/2023-10-26-til-토픽과-파티션.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/플랫폼 기능, 데이터 생태계.md -> _posts/til-migrated/2023/10/2023-10-26-til-플랫폼-기능-데이터-생태계.md
+- kafka/Kafka-핵심-가이드/chapter-1-2/확장성.md -> _posts/til-migrated/2023/10/2023-10-26-til-확장성.md
+- kafka/Kafka-핵심-가이드/chapter-3/Custom Serializer 문제.md -> _posts/til-migrated/2023/10/2023-10-26-til-custom-serializer-문제.md
+- kafka/Kafka-핵심-가이드/chapter-3/Custom Serializer.md -> _posts/til-migrated/2023/10/2023-10-26-til-custom-serializer.md
+- kafka/Kafka-핵심-가이드/chapter-3/Header.md -> _posts/til-migrated/2023/10/2023-10-26-til-header.md
+- kafka/Kafka-핵심-가이드/chapter-3/Kafka broker의 쿼터, 스로틀링.md -> _posts/til-migrated/2023/10/2023-10-26-til-kafka-broker의-쿼터-스로틀링.md
+- kafka/Kafka-핵심-가이드/chapter-3/KafkaProducer 에러 종류.md -> _posts/til-migrated/2023/10/2023-10-26-til-kafkaproducer-에러-종류.md
+- kafka/Kafka-핵심-가이드/chapter-3/Partition.md -> _posts/til-migrated/2023/10/2023-10-26-til-partition.md
+- kafka/Kafka-핵심-가이드/chapter-3/ProducerInterceptor.md -> _posts/til-migrated/2023/10/2023-10-26-til-producerinterceptor.md
+- kafka/Kafka-핵심-가이드/chapter-3/Producer의 데이터 전송 흐름.md -> _posts/til-migrated/2023/10/2023-10-26-til-producer의-데이터-전송-흐름.md
+- kafka/Kafka-핵심-가이드/chapter-3/Producer의 메세지 전송 방법 3가지.md -> _posts/til-migrated/2023/10/2023-10-26-til-producer의-메세지-전송-방법-3가지.md
+- kafka/Kafka-핵심-가이드/chapter-3/Schema Registry.md -> _posts/til-migrated/2023/10/2023-10-26-til-schema-registry.md
+- kafka/Kafka-핵심-가이드/chapter-3/재시도 가능한 에러, 불가능한 에러는 무엇이 있을까 ?.md -> _posts/til-migrated/2023/10/2023-10-26-til-재시도-가능한-에러-불가능한-에러는-무엇이-있을까.md
+- kafka/Kafka-핵심-가이드/chapter-3/카프카 프로듀서 생성.md -> _posts/til-migrated/2023/10/2023-10-26-til-카프카-프로듀서-생성.md
+- kafka/Kafka-핵심-가이드/chapter-4/Consumer 생성하기.md -> _posts/til-migrated/2023/11/2023-11-16-til-consumer-생성하기.md
+- kafka/Kafka-핵심-가이드/chapter-4/Consumer.md -> _posts/til-migrated/2023/11/2023-11-16-til-consumer.md
+- kafka/Kafka-핵심-가이드/chapter-4/Group Coordinator ?.md -> _posts/til-migrated/2023/11/2023-11-16-til-group-coordinator.md
+- kafka/Kafka-핵심-가이드/chapter-4/Heartbeat ?.md -> _posts/til-migrated/2023/11/2023-11-16-til-heartbeat.md
+- kafka/Kafka-핵심-가이드/chapter-4/Offset Commit.md -> _posts/til-migrated/2023/11/2023-11-16-til-offset-commit.md
+- kafka/Kafka-핵심-가이드/chapter-4/OffsetCommit  방법.md -> _posts/til-migrated/2023/11/2023-11-16-til-offsetcommit-방법.md
+- kafka/Kafka-핵심-가이드/chapter-4/Partition Rebalance.md -> _posts/til-migrated/2023/11/2023-11-16-til-partition-rebalance.md
+- kafka/Kafka-핵심-가이드/chapter-4/Rebalance Listener.md -> _posts/til-migrated/2023/11/2023-11-16-til-rebalance-listener.md
+- kafka/Kafka-핵심-가이드/chapter-4/poll() 말고 다른 방법으로 읽기.md -> _posts/til-migrated/2023/11/2023-11-16-til-poll-말고-다른-방법으로-읽기.md
+- kafka/Kafka-핵심-가이드/chapter-4/poll().md -> _posts/til-migrated/2023/11/2023-11-16-til-poll.md
+- kafka/Kafka-핵심-가이드/chapter-4/polling loop 벗어나기.md -> _posts/til-migrated/2023/11/2023-11-16-til-polling-loop-벗어나기.md
+- kafka/Kafka-핵심-가이드/chapter-4/정적 그룹 멤버쉽.md -> _posts/til-migrated/2023/11/2023-11-16-til-정적-그룹-멤버쉽.md
+- kafka/temp.md -> _posts/til-migrated/2024/04/2024-04-04-til-temp.md
+- kotlin/kotlin-basic.md -> _posts/til-migrated/2024/11/2024-11-18-til-kotlin-basic.md
+- markdown/Markdown syntax.md -> _posts/til-migrated/2023/11/2023-11-28-til-markdown-syntax.md
+- mongo-db/mongo db command.md -> _posts/til-migrated/2023/12/2023-12-22-til-mongo-db-command.md
+- seminar/aws/2025-02-07-ai-new-feature-seminar.md -> _posts/til-migrated/2025/02/2025-02-17-til-2025-02-07-ai-new-feature-seminar.md
+- seminar/aws/DB for MSA.md -> _posts/til-migrated/2024/01/2024-01-29-til-db-for-msa.md
+- seminar/oracle/오라클 12c ~ 19c new feature 세미나.md -> _posts/til-migrated/2024/03/2024-03-08-til-오라클-12c-19c-new-feature-세미나.md
+- spring/springboot/http2.md -> _posts/til-migrated/2021/11/2021-11-02-til-http2.md
+- spring/springboot/properties.md -> _posts/til-migrated/2021/11/2021-11-06-til-properties.md
+- spring/springboot/springboot-with-kotlin-plugin.md -> _posts/til-migrated/2025/03/2025-03-07-til-springboot-with-kotlin-plugin.md
+- spring/springboot/원리.md -> _posts/til-migrated/2021/10/2021-10-27-til-원리.md
+- spring-batch/springbatch_quartz.md -> _posts/til-migrated/2024/04/2024-04-04-til-springbatch_quartz.md
