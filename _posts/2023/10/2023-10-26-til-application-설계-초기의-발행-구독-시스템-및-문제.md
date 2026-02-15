@@ -19,3 +19,8 @@ point to point 방식
 장기적으로 Application의 기능, 비즈니스가 발전하는 과정에서 API 간의 복잡도가 증가한다.
 ![[1-2.png]]
 지표라는 데이터를 생성하고, 사용하는 Application들이 복잡하게 얽혀 있다.
+
+---
+
+📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
+

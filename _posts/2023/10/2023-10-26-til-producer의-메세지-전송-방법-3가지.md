@@ -66,3 +66,8 @@ kafkaProducer.send(record, (recordMetadata, e) -> {
 
 💡💡 callback은 Producer의 main thread에서 실행된다. 그렇기때문에 callback 안에서 blocking 작업을 수행하는 것은 권장되지 않는다. 대신 blocking 작업을 동시에 수행하는 다른 thread를 사용하도록 하자.
 그렇지 않으면 Producer가 지연될 수 있다 !!
+
+---
+
+📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
+

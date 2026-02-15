@@ -43,3 +43,8 @@ public class CustomerSerializer implements Serializer<Customer> {
     }  
 }
 ```
+
+---
+
+📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
+

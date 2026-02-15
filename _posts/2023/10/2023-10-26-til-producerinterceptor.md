@@ -46,3 +46,8 @@ public class CustomerInterceptore implements ProducerInterceptor {
 - 정보추적
 - 표준 헤더 삽입
 - 개인정보 삭제
+
+---
+
+📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
+
