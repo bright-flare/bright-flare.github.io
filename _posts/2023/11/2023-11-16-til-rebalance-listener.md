@@ -5,7 +5,7 @@ categories: [kafka, Kafka-핵심-가이드, chapter-4]
 tags: [TIL, migration]
 description: "TIL에서 마이그레이션한 문서: kafka/Kafka-핵심-가이드/chapter-4/Rebalance Listener.md"
 ---
-💡 컨슈머는 토픽 subscribe()를 호출할 때 ConsumerRebalanceListener를 전달해주면 리밸런싱을 리스닝할 수 있다.
+> 컨슈머는 토픽 subscribe()를 호출할 때 ConsumerRebalanceListener를 전달해주면 리밸런싱을 리스닝할 수 있다.
 
 
 ## onPartitionsAssigned
@@ -38,3 +38,8 @@ default void onPartitionsLost(Collection<TopicPartition> partitions) {
     onPartitionsRevoked(partitions);  
 }
 ```
+
+---
+
+📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
+

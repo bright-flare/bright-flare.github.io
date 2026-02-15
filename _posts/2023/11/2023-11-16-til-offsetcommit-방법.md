@@ -46,7 +46,7 @@ while (true) {
 - 많은 레코드를 처리하는 도중 crash가 날 경우, 메세지를 중복 처리해야한다.
 - 동기 커밋의 단점중 하나는 브로커가 커밋 요청에 응답할 때까지 Application이 block된다는 점이다.
 	- Application 처리량이 매우 떨어질 수 있다.
-	- 성능때문에한번에 처리하는 record 수를 많이 다뤄 commit 빈도수를 낮추자니 잠재적인 중복 메세지 수가 늘어난다.
+	- 성능때문에한번에 처리하는 record 수를 많이 다뤄 commit 빈도수를 낮추자니 잠재적인 중복 메세지 수가 늘어난다.
 
 ## 2️⃣ commitAsync() 비동기 커밋
 
@@ -66,7 +66,9 @@ while (true) {
 - 마지막 offset을 커밋 하고 처리 작업을 계속진행한다.
 - `commitSync()` 는 재시도 불가능한 실패가 발생할 때까지 커밋을 재시도 하는 반면, <mark style="background: #FF5582A6;">commitAsync()는 재시도를 하지 않는다</mark>.
 - 비동기적으로 커밋을 진행하고 다음 작업을 계속 진행하다보니, 커밋을 재시도할 경우 offset 커밋 위치가 꼬이는 경우가 발생할 수 있어 재시도 프로세스가 없다. ✅
-- ![[비동기커밋이-있다면.png]]
+- 
+> 🖼️ 원본 노트 이미지: `비동기커밋이-있다면.png` (마이그레이션 시 이미지 경로 확인 필요)
+
 - 위 그림처럼 첫번째 커밋이 더 늦게 완료되는 경우 .. 다음 요청에서 컨슈머가 받는 데이터는 1000 offset 위치에 해당하는 데이터일 것이다.
 
 ### 💡 commitAsync(callback()) callback을 통해 재시도 구현 가능
@@ -108,8 +110,16 @@ try {
 
 # 특정 offset 커밋하기.
 
-- poll() 메서드가엄청나게 큰 레코드를 리턴하는 경우 리밸런스가 발생하여, 전체 배치를 재처리 하는 상황을 피하기 위해 배치를 처리하는 도중에 offset을 커밋할 수 있다.
+- poll() 메서드가엄청나게 큰 레코드를 리턴하는 경우 리밸런스가 발생하여, 전체 배치를 재처리 하는 상황을 피하기 위해 배치를 처리하는 도중에 offset을 커밋할 수 있다.
 	- 🔴 이 경우 commitSync(), commitAsync() 를 호출할 수 없다.  아직 처리하지 않은 return된 마지막 `offset + 1` 위치의 offset을 commit하기 때문이다.
 - offset 객체를 만들어 paramter로 전달하여 offset을 명시할 수 있다.
-   ![[commitSync-offset.png]]
-   ![[commitAsync-offset2.png]]
+   
+> 🖼️ 원본 노트 이미지: `commitSync-offset.png` (마이그레이션 시 이미지 경로 확인 필요)
+
+   
+> 🖼️ 원본 노트 이미지: `commitAsync-offset2.png` (마이그레이션 시 이미지 경로 확인 필요)
+
+---
+
+📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
+

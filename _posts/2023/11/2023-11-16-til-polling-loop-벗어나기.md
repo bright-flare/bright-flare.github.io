@@ -45,3 +45,8 @@ try {
 }
 
 ```
+
+---
+
+📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
+
