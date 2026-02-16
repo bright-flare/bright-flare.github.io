@@ -1,7 +1,7 @@
 ---
 title: 안녕하세요! 첫 번째 포스트입니다
 date: 2025-01-16 21:40:00 +0900
-categories: [블로그, 일상]
+categories: [Blogging, Personal]
 tags: [첫포스트, jekyll, github-pages]
 ---
 

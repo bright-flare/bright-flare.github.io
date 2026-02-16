@@ -1,14 +1,20 @@
 ---
-title: "GarbageCollection"
+title: "Garbagecollection"
 date: 2022-05-17 00:00:00 +0900
-categories: [java]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: java/GarbageCollection.md"
+categories: [Language, Java]
+tags: [TIL]
+description: "Garbagecollection의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
-# Garbage Collection
+## 한눈에 보기
+- Garbage Collection
+- Garbage Collector
+- Stop the world상태의 **Garbage Collection** 실행자이다. **Garbage Collection**을 실질적으로 실행하는 주체.
+
+## Garbage Collection
 
 > **Garbage** **Collection은 JVM heap 메모리 공간에서 사용되지 않는 객체 메모리 할당을 해제하는 일을 말한다.**
-> 
+>
 
 ### Garbage Collector
 

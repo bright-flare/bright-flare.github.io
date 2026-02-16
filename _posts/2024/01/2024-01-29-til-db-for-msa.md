@@ -1,19 +1,23 @@
 ---
 title: "DB for MSA"
 date: 2024-01-29 00:00:00 +0900
-categories: [seminar, aws]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: seminar/aws/DB for MSA.md"
+categories: [Seminar, AWS]
+tags: [TIL]
+description: "DB for MSA의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
+## 한눈에 보기
+- 데이터베이스 마이그레이션 서비스
+- 데이터를 이관할 수 있다.
+- EC2 가격만 제공하면됨
+
 한정판 세일 -> 레디스
 리더보드 - 랭킹 - 레디스
 콜센터 crm - 몽고디비
 purchase list - 다이나모 디비 key value 스토어를 통해서 order list 효율화 가능
 
-
-
-oracle -> 
-redis 같은 경우 application level에서 lock 매커니즘구현 필요
+oracle ->
+redis 같은 경우 Application level에서 lock 매커니즘구현 필요
 엔진에서 제공하지 않기 때문
 
 apache bench로 동일한 request 테스트 시 4배 성능 개선 효과
@@ -21,8 +25,7 @@ apache bench로 동일한 request 테스트 시 4배 성능 개선 효과
 rank -> oracle 107ms -> redis 20ms
 데이터 양이 많아지면 많아질수록 효율 향상
 
-crm -> 다이나모디비 전환후 
-
+crm -> 다이나모디비 전환후
 
 ## 데이터베이스 마이그레이션 서비스
 

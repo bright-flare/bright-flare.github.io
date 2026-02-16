@@ -1,15 +1,23 @@
 ---
-title: "Heartbeat ?"
+title: "Heartbeat"
 date: 2023-11-16 00:00:00 +0900
-categories: [kafka, Kafka-핵심-가이드, chapter-4]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: kafka/Kafka-핵심-가이드/chapter-4/Heartbeat ?.md"
+categories: [Kafka, Consumer]
+tags: [TIL]
+description: "Heartbeat 주제의 핵심 개념과 적용 포인트를 정리합니다."
+author: bright-flare
 ---
-- 심장박동수.
-- 컨슈머의 백그라운드 스레드에 의해 Coordinator로 하트비트가 전송된다.
-- Coordinator는 심장박동수가 느껴지지 않으면 컨슈머가 죽었다고 판단한다.
+## Heartbeat란
 
----
+Consumer는 백그라운드에서 주기적으로 heartbeat를 전송해 "나는 아직 살아 있고 이 파티션을 처리 중"임을 알린다.  
+Coordinator는 이 신호를 기준으로 그룹 멤버 상태를 판단한다.
 
-📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
+## heartbeat가 끊기면
 
+일정 시간 동안 heartbeat가 도착하지 않으면 Coordinator는 해당 Consumer를 비정상으로 판단한다.  
+그 결과 파티션 재할당을 위해 리밸런스가 발생한다.
+
+## 실무 포인트
+
+- heartbeat 간격을 너무 짧게 잡으면 불필요한 오버헤드가 늘 수 있다.
+- 너무 길게 잡으면 장애 감지가 느려진다.
+- poll 지연과 heartbeat 실패가 함께 발생하지 않도록 처리 구조를 분리해야 한다.

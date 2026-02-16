@@ -24,7 +24,6 @@ image:
 
 `Collection Interface`의 예 처럼 구현체가 구현하지 않아도 되는 `default method`는 기존 인터페이스에 새로운 메소드를 추가하여 **기능의 확장을 이루면서도 하위호환이 가능하게 한다.** 이전 버전의 코드를 변경하지 않고도 새로운 기능을 추가할 수 있다.
 
-
 ## Interface vs Abstract Class
 
 > Java 8부터 추가된 ***Interface***의 `default mehtod`로 인해 ***Abstract Class***와의 차이가 불분명하다고 생각되어 차이점을 정리하는 시간을 갖는다.

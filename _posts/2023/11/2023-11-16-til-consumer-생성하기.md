@@ -1,52 +1,49 @@
 ---
 title: "Consumer 생성하기"
 date: 2023-11-16 00:00:00 +0900
-categories: [kafka, Kafka-핵심-가이드, chapter-4]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: kafka/Kafka-핵심-가이드/chapter-4/Consumer 생성하기.md"
+categories: [Kafka, Consumer]
+tags: [TIL]
+description: "Consumer 생성하기 주제의 핵심 개념과 적용 포인트를 정리합니다."
+author: bright-flare
 ---
-- Producer 인스턴스를 생성하는 것과 매우 비슷하다.
-- 필수 속성도 3개로 동일하다.
-	- bootstrap.servers
-	- key.serializer
-	- value.serializer
-- 일반적으로 자주 사용하는 추가 1개 속성
-	- 컨슈머 그룹을 지정하는 `group.id` 속성
+## Consumer 생성 기본
 
-
-## code
+Consumer는 다음과 같이 설정 객체를 구성한 뒤 생성한다.
 
 ```java
-kafkaProps.put("group.id",groupId);  
-kafkaProps.put("bootstrap.servers",servers);  
-kafkaProps.put("key.deserializer","org.apache.kafka.common.serialization.StringDeserializer");  
-kafkaProps.put("value.deserializer","org.apache.kafka.common.serialization.StringDeserializer");  
-kafkaProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);  
-  
+kafkaProps.put("group.id", groupId);
+kafkaProps.put("bootstrap.servers", servers);
+kafkaProps.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+kafkaProps.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+kafkaProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
+
 KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(kafkaProps);
 ```
 
+Producer와 비슷해 보이지만, Consumer는 "어디까지 읽었는가"를 관리해야 하므로 그룹/오프셋 설정 의미가 더 크다.
 
-## Topic 구독하기
+## 주요 설정 포인트
 
-- N개의 토픽을 구독할 수 있다.
-- 정규식을 사용해서 pattern과 일치하는 N개의 토픽을 구독할수도 있다.
-	- 정규식을 사용하는 경우 정규식과 match되는 이름을 가진 새로운 토픽을 생성하는 경우, 거의 즉시 리밸런스가 발생하면서 컨슈머들은 새로운 토픽으로부터의 읽기 작업을 시작하게 된다.
+- `group.id`
+  - 동일 그룹 내 Consumer들이 파티션을 분담한다.
+- `key.deserializer`, `value.deserializer`
+  - Producer의 직렬화 포맷과 정확히 맞아야 역직렬화 실패를 피할 수 있다.
+- `enable.auto.commit`
+  - 자동 커밋 여부를 결정한다. 정합성이 중요하면 수동 커밋을 검토한다.
+
+## 토픽 구독 방법
+
 ```java
-// collection을 넘겨 N개의 토픽 구독 가능
 consumer.subscribe(Collections.singletonList("customerCountries"));
-
-// 정규식을 통해 N개의 토픽 구독 가능.
 consumer.subscribe(Pattern.compile("test.*"));
 ```
 
-# 🔴 정규식으로 토픽 구독시 주의 !
+- 명시적 토픽 목록 구독
+- 정규식 패턴 구독
 
-- 전체 토픽의 일부를 구독할 때 정규식으로 지정하는 경우 컨슈머는 전체 토픽과 파티션에 대한 정보를 브로커에게 일정한 간격으로 요청.
-- 패턴으로 찾아내는 토픽, 파티션의 크기가 클 수록 브로커, 클라이언트, 네트워크 오버헤드를 발생시킨다.
-- 메세지 데이터를 주고받는데 사용되는 네트워크 대역폭보다 토픽의 메타데이터를 주고받는데에 사용되는 대역폭 크기가 더 큰 경우도 있다.
+패턴 구독은 운영 편의성이 높지만, 대규모 토픽 환경에서는 메타데이터 조회 비용이 커질 수 있다.
 
----
+## 실무 포인트
 
-📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
-
+- 구독 대상 토픽이 많아질수록 리밸런스 영향 범위도 함께 커진다.
+- 특히 정규식 기반 대규모 구독은 브로커/클라이언트/네트워크에 추가 부담을 줄 수 있으므로 모니터링이 필요하다.

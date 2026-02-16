@@ -1,8 +1,8 @@
 ---
 title: "springboot starter 의존성 원리"
 date: 2021-10-27 00:00:00 +0900
-categories: [spring, springboot]
-tags: [TIL, migration]
+categories: [SpringBoot]
+tags: [TIL]
 description: "TIL에서 마이그레이션한 문서: spring/springboot/원리.md"
 ---
 # Spring boot 원리

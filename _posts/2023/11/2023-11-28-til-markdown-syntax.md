@@ -1,23 +1,27 @@
 ---
-title: "Markdown syntax"
+title: "Markdown Table 문법"
 date: 2023-11-28 00:00:00 +0900
-categories: [markdown]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: markdown/Markdown syntax.md"
+categories: [Docs, Markdown]
+tags: [Markdown, Docs]
+description: "Markdown 표(Table) 작성 시 자주 쓰는 기본 문법과 정렬 규칙을 정리합니다."
+author: bright-flare
 ---
-# Table
+문서 작성에서 표는 정보를 압축해서 전달할 때 가장 자주 쓰는 형식이다. 아래 문법만 기억하면 대부분의 경우를 처리할 수 있다.
 
-> 기본 사용법
-```
-|열1|열2|열3|
+## 기본 표 문법
+
+```md
+| 열1 | 열2 | 열3 |
 |:---:|:---:|:---:|
-|내용1|내용2|내용3|
+| 내용1 | 내용2 | 내용3 |
 ```
 
+## 정렬 규칙
 
-> 정렬 option
+```md
+:---:  # 가운데 정렬
+---:   # 오른쪽 정렬
+:---   # 왼쪽 정렬
 ```
-:---: -> 가운데 정렬
----: -> 오른쪽으로 정렬
-:--- -> 왼쪽으로 정렬
-```
+
+표를 자주 수정하는 문서라면 헤더명 길이를 맞춰 두면 유지보수가 훨씬 편해진다.

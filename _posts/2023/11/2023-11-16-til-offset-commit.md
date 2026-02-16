@@ -1,27 +1,36 @@
 ---
 title: "Offset Commit"
 date: 2023-11-16 00:00:00 +0900
-categories: [kafka, Kafka-핵심-가이드, chapter-4]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: kafka/Kafka-핵심-가이드/chapter-4/Offset Commit.md"
+categories: [Kafka, Consumer]
+tags: [TIL]
+description: "Offset Commit 주제의 핵심 개념과 적용 포인트를 정리합니다."
+author: bright-flare
 ---
-> 컨슈머가 polling할 때, 카프카에 쓰여진 메세지 중에서 컨슈머 그룹에 속한 컨슈머들이 아직 읽지 않은 Record가 return된다.
+## Offset Commit이란
 
-> 컨슈머는 어떻게 읽지 않은 레코드를 요청해서 읽어들일 수 있을까 ?
-# offset commit
+Consumer는 메시지를 읽기만 해서는 상태가 보존되지 않는다.  
+"여기까지 처리 완료"라는 체크포인트를 Kafka에 기록해야 재시작 이후에도 이어서 처리할 수 있다.
 
-- 컨슈머는 파티션에서 성공적으로 읽어들인 마지막 메세지를 커밋함으로써 현재 위치를 업데이트 한다. 이 작업을 `offset commit` 이라고 한다.
-- 컨슈머 그룹에서 리밸런싱이 발생하는 경우 컨슈머들은 리밸런스 이전에 할당받은 파티션과 다른 파티션을 할당받을 수 있다. 하지만 각 파티션으로부터 마지막으로 commit된 offset 메타데이터 정보를 통해 작업을 이어나갈 수 있다.
-- 컨슈머는 카프카에 특수 토픽인 `__cunsumer_offsets` 토픽에 각 파티션별로 오프셋을 업데이트하도록 하는 메세지를 보낸다.
+이 체크포인트 기록이 offset commit이다.  
+Kafka는 내부 토픽(`__consumer_offsets`)에 그룹/파티션별 커밋 상태를 관리한다.
 
-## offset commit 위치
+## 커밋 위치 이해하기
 
-- poll() 메소드가 return한 마지막 offset 바로 다음 offset을 commit 한다.
+일반적으로 커밋되는 값은 "마지막으로 처리한 오프셋"이 아니라 **다음에 읽을 오프셋**이다.  
+예를 들어 오프셋 100까지 처리했다면 101을 커밋하는 식이다.
 
+이 차이를 이해해야 중복/유실 분석 시 혼동을 줄일 수 있다.
 
-> 🖼️ 원본 노트 이미지: `offset commit.png` (마이그레이션 시 이미지 경로 확인 필요)
+## 커밋 전략과 트레이드오프
 
----
+- 너무 자주 커밋하면 오버헤드가 늘어난다.
+- 너무 늦게 커밋하면 장애 시 재처리 범위가 커진다.
 
-📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
+즉 커밋 전략은 "성능"과 "복구 시 중복 범위" 사이 균형 문제다.  
+배치 크기, 처리 시간, 장애 허용 수준을 기준으로 정책을 정하는 게 현실적이다.
 
+## 실무 체크 포인트
+
+- 처리 완료 전에 커밋하면 유실 가능성이 생긴다.
+- 처리 완료 후 커밋하면 중복 가능성은 남지만 유실 위험은 낮출 수 있다.
+- 다운스트림(DB/API) 멱등성이 약하면 커밋 정책을 더 보수적으로 잡아야 한다.

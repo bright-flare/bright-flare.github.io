@@ -1,12 +1,17 @@
 ---
-title: "properties"
+title: "Properties"
 date: 2021-11-06 00:00:00 +0900
-categories: [spring, springboot]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: spring/springboot/properties.md"
+categories: [SpringBoot]
+tags: [TIL]
+description: "Properties의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
-# 🛠 Spring boot properties
+## 한눈에 보기
+- 🛠 Spring boot properties
+- 🧑🏻‍💻 프로퍼티 적용 우선순위.
+- 우선순위는 아래 링크 참조.
 
+## 🛠 Spring boot properties
 
 ## 🧑🏻‍💻 프로퍼티 적용 우선순위.
 - 우선순위는 아래 링크 참조.
@@ -48,12 +53,11 @@ public class SeobProperties {
 
     > ex) `sseob.sessionTimeout = 20` -> 이 경우에는 ssesionTimeout field에 `@DurationUnit(ChronoUnit.SECONDS)` 라고 명시해야된다.
 
-
 ## 👋 Profile과 함께
 
-> 여러가지 프로파일을 만들어 놓고, program argument 또는 application.properties에 설정하여 선택적인 프로퍼티 값을 사용할 수 있다.
+> 여러가지 프로파일을 만들어 놓고, program argument 또는 Application.properties에 설정하여 선택적인 프로퍼티 값을 사용할 수 있다.
 
-> profile이 적용된 application properties가 우선순위가 더 높다.
+> profile이 적용된 Application properties가 우선순위가 더 높다.
 
 > 선택적인 Bean설정을 사용할 수 있다.
 
@@ -61,7 +65,7 @@ public class SeobProperties {
 @Configuration
 @Profile("hyun")
 public class HyunProfileConfig {
-	
+
 	@Bean
 	public String hello() {
 		return "hello hyun !";
@@ -71,7 +75,7 @@ public class HyunProfileConfig {
 @Configuration
 @Profile("sseob")
 public class SeobProfileConfig {
-	
+
 	@Bean
 	public String hello() {
 		return "hello sseob !";
@@ -79,18 +83,18 @@ public class SeobProfileConfig {
 }
 ```
 
-- `application properties` hyun profile 활성화 설정.
+- `Application properties` hyun profile 활성화 설정.
 ```xml
 sseob.fullName= hyunSseob
 spring.profiles.active=hyun
 ```
 
-- `application-sseob.properties` sseob.fullName값 설정.
+- `Application-sseob.properties` sseob.fullName값 설정.
 ```xml
 sseob.full-name=sseob profile was changed sseob full name
 ```
 
-- `application-hyun.properties` sseob.fullName값 설정.
+- `Application-hyun.properties` sseob.fullName값 설정.
 ```xml
 sseob.full-name=hyun profile was changed sseob full name
 ```
@@ -121,7 +125,7 @@ public class ProfileRunner implements ApplicationRunner {
 
 ### 출력
 1. profile 활성화 설정에 따라 `HyunProfileConfig` Class의 Bean이 **주입** 되었음을 알 수 있다.
-2. 프로퍼티 적용 우선순위에 따라 sseob.fullName 값이 application-hyun.properties 파일의 값으로 적용된것을 확인할 수 있다. 
+2. 프로퍼티 적용 우선순위에 따라 sseob.fullName 값이 Application-hyun.properties 파일의 값으로 적용된것을 확인할 수 있다.
 ```console
 =============ProfileRunner=============
 hello hyun !
@@ -130,7 +134,7 @@ hyun profile was changed sseob full name
 ```
 
 ### 프로파일 변경하기
-- application.properties 파일의 설정을 통해 변경할 수 있지만 다른 방법도 있다.
+- Application.properties 파일의 설정을 통해 변경할 수 있지만 다른 방법도 있다.
 ```xml
 spring.profiles.active=hyun
 ```

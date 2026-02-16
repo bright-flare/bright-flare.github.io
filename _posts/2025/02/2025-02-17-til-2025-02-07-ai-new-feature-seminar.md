@@ -1,15 +1,21 @@
 ---
-title: "2025-02-07-ai-new-feature-seminar"
+title: "AI New Feature Seminar"
 date: 2025-02-17 00:00:00 +0900
-categories: [seminar, aws]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: seminar/aws/2025-02-07-ai-new-feature-seminar.md"
+categories: [Seminar, AWS]
+tags: [TIL]
+description: "AI New Feature Seminar의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
+## 한눈에 보기
+- AI 관련 신규 기능
+- 검색, 탐색 트렌드의 변화
+- 검색창을 통한 검색이 아니라 이제는 이커머스에서도 AI agent를 통한 검색이 엄청나게 발전할 것이다.
+
 ## AI 관련 신규 기능
 
 ### 검색, 탐색 트렌드의 변화
 
-- 검색창을 통한 검색이 아니라 이제는 이커머스에서도 AI agnet를 통한 검색이 엄청나게 발전할 것이다.
+- 검색창을 통한 검색이 아니라 이제는 이커머스에서도 AI agent를 통한 검색이 엄청나게 발전할 것이다.
 - 앞으로는 양방향으로 검색이 이루어질 것이다.
 
 ### Bedrock
@@ -19,33 +25,32 @@ description: "TIL에서 마이그레이션한 문서: seminar/aws/2025-02-07-ai-
 
 ### Nova
 
-- bedrock 통해서 노바 이용 가능. 
+- Bedrock 통해서 노바 이용 가능.
 - aws에서 개발한 인텔리전스 중, foundation 모델이다.
-- 200+ lanuguage를 지원한다. -> 한국어 지원
-- text, image, vedio 등을 지원하는 모델이 있음.
+- 200+ language를 지원한다. -> 한국어 지원
+- text, image, video 등을 지원하는 모델이 있음.
 
-### Text to sql
+### Text to SQL
 
-- 사람의 언어. 자연어를 sql query 형태로 바꿔주는 기능.
-- application 개발을 수개월에서 며칠로 단축 예상.
+- 사람의 언어. 자연어를 SQL query 형태로 바꿔주는 기능.
+- Application 개발을 수개월에서 며칠로 단축 예상.
 
 ### Amazon Q
 
 - 기존에는 코파일럿 수준의 코드 작성 , 수정 등의 기능을 지원했는데 더 많은 기능이 확장되었다.
 - Java 8, 11 to 17 migration 을 지원가능 등등
 
-
 ## AI를 제외한 신규 기능
 
 ### Aurora
 
-- 0개 ACU 지원.  기존에는 0.5가 미니멈이었음.
-- 1개만 존재했던 Writer를 
+- 0 ACU 지원.  기존에는 0.5가 미니멈이었음.
+- 1개만 존재했던 Writer를
 
 ### Aurora DSQL (NewSQL)
 
 - DSQL을 구성하는 컴포넌트별로 확장이 가능한 DB이다.
-	- 트랜잭션, 세션 라우터 
+	- 트랜잭션, 세션 라우터
 	- 쿼리 프로세서
 	- 스토리지 등
 - 멀티 리전 액티브-액티브가 가능하다.
@@ -56,10 +61,9 @@ description: "TIL에서 마이그레이션한 문서: seminar/aws/2025-02-07-ai-
 ### Oracle Database@AWS
 
 - AWS 데이터센터에서 Oracle Exadata 워크로드를 실행한다.
-- OCI 에 비해 장점 ? 
+- OCI 에 비해 장점 ?
 	- AWS 통합이 쉽다.
 	- zero-ETL 예정이라서 오라클 데이터를 Data Lake에 옮기거나 DW에 옮기는 작업이 매우 수월해진다.
-
 
 ### CloudWatch
 
@@ -69,12 +73,12 @@ description: "TIL에서 마이그레이션한 문서: seminar/aws/2025-02-07-ai-
 
 ### DynamoDB
 
-- 매우 파격적인 가격인하 ! 
+- 매우 파격적인 가격인하 !
 	- 50 ~ 70 %
 
 ### S3 Table
 
-- S3 에 정형 데이터를 쌓아두는 케이스가 많아지고 있는데, 
+- S3 에 정형 데이터를 쌓아두는 케이스가 많아지고 있는데,
 - S3 데이터를 트랜잭션 처리 가능하다.
 
 ### S3 Metadata

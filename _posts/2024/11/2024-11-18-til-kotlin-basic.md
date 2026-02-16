@@ -1,11 +1,17 @@
 ---
-title: "kotlin-basic"
+title: "Kotlin Basic"
 date: 2024-11-18 00:00:00 +0900
-categories: [kotlin]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: kotlin/kotlin-basic.md"
+categories: [Language, Kotlin]
+tags: [TIL]
+description: "Kotlin Basic의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
-# 아토믹 코틀린 학습중에 기록하고 싶은 것들.
+## 한눈에 보기
+- 아토믹 코틀린 학습중에 기록하고 싶은 것들.
+- 프로그램 진입점은 fun main() 이다.
+- 세미콜론 생략해서 사용하는게 10분만에 적응될 정도로 편함
+
+## 아토믹 코틀린 학습중에 기록하고 싶은 것들.
 
 - 프로그램 진입점은 fun main() 이다.
   - java의 public static void main(String[] args)와 같다.
@@ -51,12 +57,12 @@ val name = "test"
 println("캬 ~ ${name}")
 ```
 
-- raw string은 편하다 
-- " 같은 문자열을 escape하지 않아도 된다 
+- raw string은 편하다
+- " 같은 문자열을 escape하지 않아도 된다
 ```kotlin
 
   // raw string !
-  val lines: String = """ 
+  val lines: String = """
     첫
     둘
     셋 줄 테스트 => ${words}
@@ -65,7 +71,7 @@ println("캬 ~ ${name}")
 ```
 
 - 한줄짜리 함수를 만들 수 있따.. 내기준 충격
-    - expression body라고 한다. 
+    - expression body라고 한다.
     - 식본문
     - lambda expression 처럼 return 생략 가능함 !!
     - 식 본문만 반환 타입 추론 가능하다. 와우
@@ -75,7 +81,6 @@ fun multiplyByThree(number: Int): Int = number * 3
 fun multiplyByFour(number: Int) = number * 4 // 식 본문만 반환 타입 추론 가능
 ```
 - 함수 본문이 중괄호로 둘러싸인 경우 block body 블록 본문이라고 한다.
-
 
 - if문이 식으로 활용 가능. if 자체를 return할 수 있다. 와우 !
 - 주의 !! if를 식으로 활용할 때에는 반드시 else가 필요하다.
@@ -88,10 +93,9 @@ fun oneOrTheOther(exp: Boolean): String =
     "False!"
   }
 ```
-- for loop 에서의 in, range expression 활용 너무 편하다 
+- for loop 에서의 in, range expression 활용 너무 편하다
 - kotlin에서는 IntRange 라는 정수 `0..10` 과 같은 정수 범위 타입이 존재함 .. !
 - range 말고도 Progression 이라는 타입이 있다. `0..10 step 2` 표현식과 같이 0부터 10인데 2tep씩 증가와 같은 Progression의 타입이다
-
 
 - default parameter 너무 편하다 기본값이 적용되어 있는 메서드, 값을 전달 받는 메서드 두 부류로 overloading하지 않아도 된다.
 - named argument 너무 편하다 2222 함수에 paremeter를 넘길 때 parameter name을 지정하여 넘길 수 있다. builder 패턴을 대체 가능하다.
@@ -140,7 +144,7 @@ class Person(
 class Person(
   val name: String = "default_현섭",
   var age: Int = 110
-){ 
+){
   val isAdult get() = this.age >= 20
 }
 
@@ -180,7 +184,7 @@ object Singleton {
 - 확장함수
 
 - lambda
-  - kotlin에서는 function이 일급시민이다. 
+  - kotlin에서는 function이 일급시민이다.
   - function을 parameter로 넘길 수 있고, 변수에 넣을 수 있다. 와우 ......
   - function이 마지막 paranmeter에 위치하는 경우 () 밖에 labda를 작성하여 넘겨줄 수 있다.
   - java에서 람다식 밖에 영역에 있는 변수를 사용할 경우 final이어야만 한다. 하지만 kotlin에서는 사용가능하다 !!

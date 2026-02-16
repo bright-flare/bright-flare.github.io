@@ -1,45 +1,47 @@
 ---
 title: "Rebalance Listener"
 date: 2023-11-16 00:00:00 +0900
-categories: [kafka, Kafka-핵심-가이드, chapter-4]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: kafka/Kafka-핵심-가이드/chapter-4/Rebalance Listener.md"
+categories: [Kafka, Consumer]
+tags: [TIL]
+description: "Rebalance Listener 주제의 핵심 개념과 적용 포인트를 정리합니다."
+author: bright-flare
 ---
-> 컨슈머는 토픽 subscribe()를 호출할 때 ConsumerRebalanceListener를 전달해주면 리밸런싱을 리스닝할 수 있다.
+## Listener를 왜 쓰는가
 
+리밸런스는 파티션 소유권이 바뀌는 이벤트다.  
+이 시점에 상태 저장, 커밋, 캐시 정리 같은 후처리를 하지 않으면 중복 처리나 상태 불일치가 발생할 수 있다.
 
-## onPartitionsAssigned
+## 주요 콜백
 
-- 파티션이 컨슈머에게 재할당된 후, 컨슈머가 메세지를 읽기 시작하기 전에 호출.
-- 협력적 리밸런스 전략일 경우
-	- 리밸런싱이 발생할 때마다 호출된다.
+### `onPartitionsAssigned()`
+
 ```java
 void onPartitionsAssigned(Collection<TopicPartition> partitions);
 ```
 
-## onPartitionsRevoked
-- 리밸런스, 컨슈머의 종료 등의 이유로 컨슈머가 할당받았던 파티션이 할당 해제될 때 호출.
-- 조급한 리밸런스 전략일 경우
-	- 컨슈머가 메세지 읽기를 멈춘 뒤 리밸런스가 시작되기 전에 호출
-- 협력적 리밸런스 전략일 경우
-	- 리밸런스가 완료될 때, 컨슈머에서 할당 해제되어야 할 파티션들에 대해서만 호출되며, 이 때 offset을 커밋해주어야 이 파티션을 다음에 할당받는 컨슈머가 다시 읽기 시작할 지점을 알 수 있다.
+- 파티션 할당 완료 후, 실제 읽기 시작 직전에 호출된다.
+- 초기화 로직(로컬 상태 준비, 시작 오프셋 확인)에 적합하다.
+
+### `onPartitionsRevoked()`
+
 ```java
 void onPartitionsRevoked(Collection<TopicPartition> partitions);
 ```
 
-## onPartitionsLost
+- 현재 파티션 소유권이 회수되기 전에 호출된다.
+- 보통 여기서 마지막 오프셋 커밋/상태 저장을 수행한다.
 
-- 예외적인 리밸런스 상황에서 호출된다. 
-- 이미 다른 컨슈머에게 할당된 파티션에 대한 리소스 정리 처리를 제공하기 위해 존재하는 메서드이다.
-- 이 메서드를 구현하지 않았을 경우 `onPartitionsRevoked()` 가 대신 호출된다.
+### `onPartitionsLost()`
 
 ```java
-default void onPartitionsLost(Collection<TopicPartition> partitions) {  
-    onPartitionsRevoked(partitions);  
+default void onPartitionsLost(Collection<TopicPartition> partitions) {
+    onPartitionsRevoked(partitions);
 }
 ```
 
----
+- 예외적 상황에서 이미 소유권을 잃은 파티션 정리를 위한 콜백이다.
 
-📚 **시리즈 목차:** [Kafka Consumer TIL 모음 (2023-11-16)](/posts/kafka-consumer-til-index/)
+## 실무 포인트
 
+- 리밸런스 콜백은 빠르고 실패에 강하게 작성해야 한다.
+- 콜백 안에서 외부 의존 호출이 길어지면 전체 소비 지연으로 이어질 수 있다.

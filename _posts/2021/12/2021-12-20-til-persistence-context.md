@@ -1,16 +1,21 @@
 ---
 title: "Persistence context"
 date: 2021-12-20 00:00:00 +0900
-categories: [jpa]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: jpa/Persistence context.md"
+categories: [JPA]
+tags: [TIL]
+description: "Persistence context의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
+## 한눈에 보기
+- PersistenceContext (영속성 컨텍스트) 👀
+- 영속성 컨텍스트는 눈에 보이지 않는 논리적인 개념이다.
+- 엔티티를 영구 저장하는 환경이다.
+
 ## PersistenceContext (영속성 컨텍스트) 👀
 
 - 영속성 컨텍스트는 눈에 보이지 않는 논리적인 개념이다.
 - 엔티티를 영구 저장하는 환경이다.
 - EntityManager를 통해서 영속성 컨텍스트에 접근할 수 있다.
-
 
 ### Entity 생명주기 💫
 1. 비영속(new/transient)
@@ -49,15 +54,15 @@ description: "TIL에서 마이그레이션한 문서: jpa/Persistence context.md
        entityManager.persist(accountA);  // 1차 캐시에 저장하고, insert query를 쓰기지연 sql 저장소에 저장 해놓는다.
        entityManager.persist(accountB);  // 1차 캐시에 저장하고, insert query를 쓰기지연 sql 저장소에 저장 해놓는다.
     ```
-    - 이후에 Transaction이 commit되는 시점에 sql query문을 실제로 실행 시킨다. 이를 flush라고 한다.
+    - 이후에 Transaction이 commit되는 시점에 SQL query문을 실제로 실행 시킨다. 이를 flush라고 한다.
 
 4. 변경 감지 (dirty checking)
     1. Transaction commit이 이루어질 때 1차 캐시의 Entity와 Entity에 해당하는 스냅샷을 비교한다.
     2. Entity와 스냅샷과의 비교 이후에 변경사항이 존재하면 쓰기 지연 sql 저장소에 query문을 저장한다.
-    3. flush가 이루어지면 저장해 놓았던 sql query문들을 Database에 실행시킨다. (Persistence context의 변경사항을 Database에 반영한다.)
+    3. flush가 이루어지면 저장해 놓았던 SQL query문들을 Database에 실행시킨다. (Persistence context의 변경사항을 Database에 반영한다.)
 
 5. 지연 로딩 (Lazy Loading)
-    1. 
+    1.
 
 ### Flush
 

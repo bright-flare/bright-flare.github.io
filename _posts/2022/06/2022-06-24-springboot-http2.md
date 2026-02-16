@@ -3,7 +3,7 @@ title: Spring Boot HTTP2 설정하기
 description: Spring Boot HTTP2 설정하기
 author: bright-flare
 date: 2022-06-24
-categories: [Framework, Spring Boot]
+categories: [SpringBoot]
 tags: [Java, Spring Boot, HTTP2]
 image:
   path: /assets/img/post/2022/springboot-http2/thumbnail.png

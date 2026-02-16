@@ -3,7 +3,7 @@ title: 🧩 Git, GitHub
 description: Git 과 Github에 대하여 정리한다.
 author: bright-flare
 date: 2022-06-23
-categories: [Devtools]
+categories: [Git]
 tags: [Git, Github]
 pin: true
 image:

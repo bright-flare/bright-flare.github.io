@@ -1,24 +1,28 @@
 ---
 title: "Schema Registry"
 date: 2023-10-26 00:00:00 +0900
-categories: [kafka, Kafka-핵심-가이드, chapter-3]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: kafka/Kafka-핵심-가이드/chapter-3/Schema Registry.md"
+categories: [Kafka, Producer]
+tags: [Kafka]
+description: "Schema Registry 주제의 핵심 개념과 적용 포인트를 정리합니다."
+author: bright-flare
 ---
-# 개요
+## 왜 필요한가
 
-Avro 사용하여 CustomSerializer 사용시 데이터 형식에 변경이 있을 경우 발생하는 문제를 해결 가능하다.
-하지만 Avro 파일은 파일안에 Schema를 저장함으로써 약간의 오버헤드가 생긴다.
+Avro를 사용하면 데이터 계약을 명확히 관리할 수 있지만, 매 레코드마다 전체 스키마를 포함하면 크기 오버헤드가 커진다.  
+이 문제를 해결하기 위해 스키마는 별도 저장소에 두고, 메시지에는 식별자(ID)만 담는 방식이 사용된다.
 
-# Schema Registry
+## 동작 방식
 
-Avro는 레코드를 읽을 때 스키마 전체를 필요로 한다.
-Kafka 에서 Avro사용시 레코드 각각에 전체 스키마를 저장해야 하는데 그 경우 전체 레코드 사이즈는 2배 이상이 될 수 있다.
+1. 생산자는 스키마를 Registry에 등록(또는 조회)한다.
+2. 메시지에는 payload와 함께 스키마 ID를 기록한다.
+3. 소비자는 스키마 ID로 Registry에서 스키마를 가져와 역직렬화한다.
 
-비효율적인 사이즈를 줄이기 위해 카프카에 데이터를 쓸 때 사용되는 모든 스키마를 스키마 레지스트리에 저장해 놓고, 카프카 레코드에는 사용된 스키마의 고유식별자만 심어주면, 
+이 방식은 네트워크 전송량을 줄이고, 스키마 버전 관리를 체계화한다.
 
-컨슈머는 이 식별자를 사용해서 스키마 레지스트리에서 스키마를 가져와서 데이터를 역직렬화 할 수 있다.
+## 실무 장점
 
----
+- 스키마 호환성 규칙을 중앙에서 강제 가능
+- 서비스별 배포 시점이 달라도 데이터 계약 유지 가능
+- 스키마 변경 이력 추적이 쉬워 장애 분석에 유리
 
-📚 **시리즈 목차:** [Kafka TIL 모음 (2023-10-26)](/posts/kafka-til-index/)
+결론적으로 Schema Registry는 Kafka에서 "데이터 거버넌스"를 구현하는 핵심 컴포넌트다.

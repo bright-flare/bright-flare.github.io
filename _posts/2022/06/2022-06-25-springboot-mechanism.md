@@ -3,7 +3,7 @@ title: Spring Boot 원리
 description: Spring Boot 원리와 자동설정에 대하여 알아보자.
 author: bright-flare
 date: 2022-06-25
-categories: [Framework, Spring Boot]
+categories: [SpringBoot]
 tags: [Java, Spring Boot]
 image:
   path: /assets/img/post/2022/springboot-mechanism/thumbnail.png

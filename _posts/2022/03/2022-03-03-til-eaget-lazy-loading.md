@@ -1,16 +1,21 @@
 ---
 title: "Eaget,Lazy loading"
 date: 2022-03-03 00:00:00 +0900
-categories: [jpa]
-tags: [TIL, migration]
-description: "TIL에서 마이그레이션한 문서: jpa/Eaget,Lazy loading.md"
+categories: [JPA]
+tags: [TIL]
+description: "Eaget,Lazy loading의 핵심 개념과 실무 포인트를 정리한 학습 노트입니다."
+author: bright-flare
 ---
-# Eager, Lazy loading
+## 한눈에 보기
+- Eager, Lazy loading
+- 즉시 로딩
+- 실행해보기
+
+## Eager, Lazy loading
 
 > **즉시로딩 (Eager) : 엔티티를 조회할 때 연관된 엔티티도 함께 조회한다.**
 
 > **지연로딩 (Lazy) : 연관된 엔티티를 실제 사용할 때 조회한다. 처음 조회할 때에는 단일 Entity만 조회하지만 그 Entity를 실제로 사용할 때 연관된 Entity관련 Query가 발생한다.**
-
 
 ## 즉시 로딩
 
@@ -22,7 +27,7 @@ public class Member{
 	@GeneratedValue
 	@Column(name = "member_id")
 	private Long id;
-	
+
 	private int age;
 
 	private String name;
@@ -63,12 +68,12 @@ Member m = entityManager.find(Member.class, member.getId());
         team1_.createdDate as createdd3_14_1_,
         team1_.lastModifiedBy as lastmodi4_14_1_,
         team1_.lastModifiedDate as lastmodi5_14_1_,
-        team1_.name as name6_14_1_ 
+        team1_.name as name6_14_1_
     from
-        Member member0_ 
+        Member member0_
     left outer join
-        Team team1_ 
-            on member0_.team_id=team1_.team_id 
+        Team team1_
+            on member0_.team_id=team1_.team_id
     where
         member0_.member_id=?
 ```
@@ -81,7 +86,7 @@ Member m = entityManager.find(Member.class, member.getId());
 
 > **즉시 로딩은 미리 결과값을 join하여 가져오기 때문에 성능상 이점을 기대하며 사용할 수 있다.**
 
-> **하지만, 즉시 로딩을 적용하면 예상하지 못하는 Sql query가 발생할 수 있어 주의가 필요하다. `JPQL`과 같이 사용할 경우 `N + 1` 문제가 발생한다.**
+> **하지만, 즉시 로딩을 적용하면 예상하지 못하는 SQL query가 발생할 수 있어 주의가 필요하다. `JPQL`과 같이 사용할 경우 `N + 1` 문제가 발생한다.**
 
 - `N + 1` 문제
 - 아래와 같이 JPQL을 통해 조회를 하게될 경우.
@@ -89,11 +94,11 @@ Member m = entityManager.find(Member.class, member.getId());
 List<Member> resultList = entityManager.createQuery("select m from Member m ", Member.class).getResultList();
 ```
 
-- sql query문 확인
+- SQL query문 확인
 ```sql
-Hibernate: 
+Hibernate:
     /* select
-        m 
+        m
     from
     Member m  */ select
         member0_.member_id as member_i1_9_,
@@ -105,23 +110,23 @@ Hibernate:
     from
         Member member0_
 
-Hibernate: 
+Hibernate:
     select
         team0_.team_id as team_id1_14_0_,
         team0_.createdBy as createdb2_14_0_,
         team0_.createdDate as createdd3_14_0_,
         team0_.lastModifiedBy as lastmodi4_14_0_,
         team0_.lastModifiedDate as lastmodi5_14_0_,
-        team0_.name as name6_14_0_ 
+        team0_.name as name6_14_0_
     from
-        Team team0_ 
+        Team team0_
     where
         team0_.team_id=?
 ```
 
-- 즉시 로딩으로 설정되어 있지 않았다면, JPQL을 통해 기대한 결과는 `"select * from Member; "` 하나의 Sql query이지만 즉시 로딩으로 설정 되어있기 때문에, 조회된 Member객체에서 비어있는 Team 객체 조회하기 위해 추가로 Team을 select하게 된다. `JPQL`로는 Member에 대한 결과값만 기대하도록 `JPQL`을 작성 하였기 때문에 추가로 Team에 대한 Sql query문이 발생한 것이다.
+- 즉시 로딩으로 설정되어 있지 않았다면, JPQL을 통해 기대한 결과는 `"select * from Member; "` 하나의 SQL query이지만 즉시 로딩으로 설정 되어있기 때문에, 조회된 Member객체에서 비어있는 Team 객체 조회하기 위해 추가로 Team을 select하게 된다. `JPQL`로는 Member에 대한 결과값만 기대하도록 `JPQL`을 작성 하였기 때문에 추가로 Team에 대한 SQL query문이 발생한 것이다.
 
-- Member가 여러명이면 해당하는 모든 Member에 대한 Team의 갯수만큼 N개의 query가 추가로 발생한다. Member에 대한 Sql query문 1개를 기대하고 실행 하였지만 모든 Member에 대한 N개의 Team을 조회하는 것을 `N + 1`문제라고 한다.
+- Member가 여러명이면 해당하는 모든 Member에 대한 Team의 갯수만큼 N개의 query가 추가로 발생한다. Member에 대한 SQL query문 1개를 기대하고 실행 하였지만 모든 Member에 대한 N개의 Team을 조회하는 것을 `N + 1`문제라고 한다.
 
 ### N + 1 문제 해결
 - `JPQL fetch join`을 통해 Team에 대한 결과값을 같이(join하여) 가져오도록 JPQL을 작성해야 한다.
@@ -138,9 +143,9 @@ Hibernate:
         team0_.createdDate as createdd3_14_0_,
         team0_.lastModifiedBy as lastmodi4_14_0_,
         team0_.lastModifiedDate as lastmodi5_14_0_,
-        team0_.name as name6_14_0_ 
+        team0_.name as name6_14_0_
     from
-        Team team0_ 
+        Team team0_
     where
         team0_.team_id in (
             ?, ?
@@ -159,7 +164,7 @@ public class Member{
 	@GeneratedValue
 	@Column(name = "member_id")
 	private Long id;
-	
+
 	private int age;
 
 	private String name;
@@ -200,19 +205,19 @@ System.out.println("m.getTeam().getClass() = " + m.getTeam().getClass());
         member0_.lastModifiedDate as lastmodi5_9_0_,
         -- ...생략
     from
-        Member member0_ 
+        Member member0_
     where
         member0_.member_id=?
 
     m.getTeam().getClass() = me.sseob.jpa.practice.basic.Team$HibernateProxy$l5MmBI0U
 ```
 
-- 즉시 로딩과는 달리 Team을 join한 query가 발생하지 않는다. 
+- 즉시 로딩과는 달리 Team을 join한 query가 발생하지 않는다.
 - 그리고 아래와 같이 Team객체를 얻어 print해보면 `Proxy` 객체가 조회 되는 것을 확인할 수 있다.
 
 ### 지연 로딩 확인하기
 
-> **`m.getTeam().getClass()` 만 print를 할 경우 지연 로딩에 의한 sql query문을 확인할 수 없다.**
+> **`m.getTeam().getClass()` 만 print를 할 경우 지연 로딩에 의한 SQL query문을 확인할 수 없다.**
 
 > **실제 Team 객체를 사용해보자.**
 
@@ -227,16 +232,16 @@ System.out.println("m.getTeam().getName() = " + m.getTeam().getName());
 
 m.getTeam().getClass() = me.sseob.jpa.practice.basic.Team$HibernateProxy$eXEaa5QH
 
-Hibernate: 
+Hibernate:
     select
         team0_.team_id as team_id1_14_0_,
         team0_.createdBy as createdb2_14_0_,
         team0_.createdDate as createdd3_14_0_,
         team0_.lastModifiedBy as lastmodi4_14_0_,
         team0_.lastModifiedDate as lastmodi5_14_0_,
-        team0_.name as name6_14_0_ 
+        team0_.name as name6_14_0_
     from
-        Team team0_ 
+        Team team0_
     where
         team0_.team_id=?
 
@@ -288,7 +293,7 @@ m.getTeam().getName() = team !
 
 > **`clear()`는 영속성 컨텍스트에 있는 데이터를 clear시킨다.**
 
-- FetchType이 지연 로딩인데도 왜 `Proxy` 객체가 아닌 실제 Team객체가 print 되었을까 ? 
+- FetchType이 지연 로딩인데도 왜 `Proxy` 객체가 아닌 실제 Team객체가 print 되었을까 ?
 
 1. `Proxy`객체는 영속성 컨텍스트에 해당 객체가 비어있을 때 얻게된다. 이미 영속성 컨텍스트에 얻고자하는 객체가 있다면 프록시 객체를 제공할 필요가 없기 때문이다.
     - 이전에는 `clear()`를 통해 영속성 컨텍스트를 비웠기 때문에 `Proxy`객체를 반환하였던 것이다.

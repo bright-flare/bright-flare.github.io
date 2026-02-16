@@ -1,5 +1,5 @@
 ---
-title: "🦞 OpenClaw 빠른 시작"
+title: "🦞 OpenClaw quick start"
 description: "Docker로 OpenClaw를 올리고 Telegram 연동, 작업 마운트 경로까지 한 번에 확인하는 퀵스타트"
 author: bright-flare
 date: 2026-02-16
@@ -32,6 +32,9 @@ cd openclaw
 ## 3) LLM OAuth 인증
 
 설치 중 안내되는 OpenAI OAuth URL을 브라우저에서 열어 인증합니다.
+
+❗ 주의 오픈클로를 서버용 장비에 배포하고, OAuth 인증을 하게되면 벤 당할수도 있다고 합니다 !!  
+서버용 장비에서는 API Key로 인증하세요 !
 
 예시:
 
