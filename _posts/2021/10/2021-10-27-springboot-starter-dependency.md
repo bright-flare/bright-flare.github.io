@@ -1,5 +1,5 @@
 ---
-title: "원리"
+title: "springboot starter 의존성 원리"
 date: 2021-10-27 00:00:00 +0900
 categories: [spring, springboot]
 tags: [TIL, migration]
