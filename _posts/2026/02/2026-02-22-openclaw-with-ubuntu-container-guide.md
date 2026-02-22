@@ -1,5 +1,5 @@
 ---
-title: "🦞 OpenClaw 퀵 스타트 가이드 !"
+title: "🦞 OpenClaw Ubuntu에 설치해서 더 자유롭게 사용하기 !"
 description: "Ubuntu에 OpenClaw를 직접 설치하고, 더 자유롭게 일 시키기."
 author: bright-flare
 date: 2026-02-22
