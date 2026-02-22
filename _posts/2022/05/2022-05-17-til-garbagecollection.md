@@ -41,10 +41,6 @@ author: bright-flare
 
 ### Garbage Collection 종류
 
-![[https://en.wikipedia.org/](https://en.wikipedia.org/)](/assets/img/til/heapmemory.png)
-
-[https://en.wikipedia.org/](https://en.wikipedia.org/)
-
 - **Minor GC** : **Young Generation**영역에서 일어난다. 새로 생성된 객체는 **Young Generation** Eden영역에 메모리가 할당된다. **Eden** 영역이 가득 차게 되면 **Minor GC**가 발생한다. **Minor GC**가 발생할때마다 **Eden**영역에서 **S0**영역으로 **S1**영역으로 옮겨진다. **Survior** 영역에서 옮겨지는 객체들은 **나이(age)**를 먹는데 **Minor GC**가 몇번이고 발생해도 계속해서 살아남은 객체들은 **나이**를 먹어 특정 **나이(age값)**에 도달하면 **Old Generation** 영역으로 옮겨진다.
 - **Major GC : Old Generation** 영역이 가득차게 되면 **Major GC**가 발생한다. 일반적으로 **Minor GC**보다 시간이 오래걸린다.
 - **Full GC : Heap 영역 전체**를 **GC**한다. **Young Generation, Old Generation** 전체를 **GC**한다.
