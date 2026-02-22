@@ -33,6 +33,6 @@ pin: true
 ## 7) OpenClaw 페어링코드 승인 이후에 다시 말걸기
 ![addAll()](/assets/img/post/2026/telegram/tel8.png)
 
-## ## 끝!! 이제 신나게 일시키자 🦞
+## 끝!! 이제 신나게 일시키자 🦞
 
 

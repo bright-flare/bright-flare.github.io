@@ -164,4 +164,4 @@ openclaw pairing approve telegram <your pairing code>
 ## 16) 대시보드에서 설정된 크론잡 정보도 확인할 수 있다 !
 ![addAll()](/assets/img/post/2026/openclaw/15.png)
 
-## ## 끝!! 이제 신나게 일시키자 🦞
+## 끝!! 이제 신나게 일시키자 🦞
