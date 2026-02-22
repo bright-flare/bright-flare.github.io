@@ -1,6 +1,6 @@
 ---
-title: "🦞 OpenClaw quick start"
-description: "Docker로 OpenClaw를 올리고 Telegram 연동, 작업 마운트 경로까지 한 번에 확인하는 퀵스타트"
+title: "🦞 OpenClaw 퀵 스타트 가이드 !"
+description: "미리 정의된 docker compose로 OpenClaw를 빠르게 설치할 수 있는 퀵 스타트 가이드 !"
 author: bright-flare
 date: 2026-02-16
 categories: [AI]
@@ -10,8 +10,7 @@ image:
   path: /assets/img/post/2026/openclaw/openclaw.png
 ---
 
-OpenClaw를 **빠르게 설치**하고, Telegram까지 붙인 다음,
-마지막으로 **Docker 마운트 작업 경로가 제대로 연결됐는지** 확인하는 흐름입니다.
+미리 정의된 docker compose로 OpenClaw를 **빠르게 설치**하고, Telegram을 연동하는 퀵 스타트 가이드 입니다 ! 
 
 ## 1) 설치
 
@@ -65,35 +64,41 @@ docker compose run --rm openclaw-cli pairing approve telegram <PAIRING_CODE>
 docker compose run --rm openclaw-cli pairing approve telegram TA6JBLX3
 ```
 
-## 5) Docker 마운트 작업 경로 확인 (중요)
+## 5) Gateway token 확인
+```bash
+docker compose run --rm openclaw-cli config get gateway.auth.token
+```
 
-OpenClaw 기본 작업 영역은 아래처럼 매핑됩니다.
+## 6) Gateway toekn 대시보드에 입력
+- 대시보드 Overview 접속
+- http://localhost:18789/overview
+- Gateway Token 란에 토큰 입력.
+
+## 7) 디바이스 승인.
+
+> 디바이스 리스트 확인 및 승인을 해야 대시보드에서 여러가지 부가 정보가 확인 가능하지만 여기서 막힘..
+> 하지만 텔레그램으로 소통하면서 즐겁게 개발은 가능.
+
+```bash
+# 디바이스 리스트 확인
+docker compose run --rm openclaw-cli devices list
+
+# 디바이스 승인
+docker compose run --rm openclaw-cli devices approve <request ID>
+```
+
+## 8) Docker 마운트 작업 경로 확인
+
+OpenClaw 기본 작업 영역은 아래처럼 매핑됨.
 
 - **호스트(macOS)**: `~/.openclaw/workspace`
 - **컨테이너 내부**: `/home/node/.openclaw/workspace`
 
-즉, 컨테이너에서 파일을 만들면 호스트에서도 바로 보여야 정상입니다.
-
-### 컨테이너 내부 확인
-
-```bash
-ls -la /home/node/.openclaw/workspace
-```
-
-### 호스트 확인
-
-```bash
-ls -la ~/.openclaw/workspace
-```
+호스트 영역에서 OpenClaw가 어떤 작업을 하는지, 개발 결과물을 눈으로 직접 확인 가능합니다 !
 
 두 위치에서 동일한 프로젝트/파일이 보이면 마운트가 정상입니다.
 
 ## 6) 트러블슈팅 포인트
-
-- 호스트에서 파일이 안 보이면:
-  - 경로를 `~/.openclaw/workspace`로 보고 있는지 확인
-  - 파일 탐색기 새로고침
-  - Docker Desktop 볼륨/마운트 설정 확인
 - Telegram 알림이 안 오면:
   - Bot Token 확인
   - 봇 대화창에서 `/start` 보냈는지 확인
