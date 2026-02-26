@@ -40,12 +40,18 @@ order: 1
 
 ---
 
-## 🚀 Projects & Activities
-- [flare-cafe](https://github.com/shim-flare-lab/flare-cafe)  
-  커피 판매 서비스 백엔드 API 개발  
-  도메인 중심 설계, 이벤트 기반 할인 정책, 주문 처리 비동기화
+## 🏢 Current Company
+- **CJ Oliveyoung**
+- **Job**: Software Engineer
+- **Period**: 2022년 9월 ~ 현재
 
 ---
+
+## 🤖 Recent Interests
+- OpenClaw, AI, Claude, Codex, Gemini
+
+---
+
 
 ## 📫 Contact
 - GitHub: [github.com/bright-flare](https://github.com/bright-flare)
@@ -58,4 +64,3 @@ order: 1
 
 > **"기록이란 과거 내가 했던 생각이나 사고방식을 엿볼 수 있는 하나의 방법이라고 생각한다."**  
 > **심현섭(밝은불꽃)**
-
