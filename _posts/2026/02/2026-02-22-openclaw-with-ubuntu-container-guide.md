@@ -164,4 +164,42 @@ openclaw pairing approve telegram <your pairing code>
 ## 16) 대시보드에서 설정된 크론잡 정보도 확인할 수 있다 !
 ![addAll()](/assets/img/post/2026/openclaw/15.png)
 
+## 17) 트러블슈팅 (버전 업데이트 이후 수정된 내용)
+
+### 1. 업데이트 후 openclaw 시작이 안되는 경우
+설정 파일이 다시 생성되면서 `gateway.bind` 값이 `loopback`으로 돌아갈 수 있다.
+
+아래 경로 확인해서 `gateway.bind` 0.0.0.0 or lan 으로 수정
+```bash
+~/.openclaw/openclaw.json
+```
+
+### 2. 대시보드 Connect가 실패하는 경우
+업데이트 이후 토큰이 갱신되었는데 이전 토큰을 입력하면 연결이 실패한다.
+
+확인/재설정:
+```bash
+jq -r '.gateway.auth.token' ~/.openclaw/openclaw.json
+```
+
+출력된 최신 토큰으로 대시보드 `Gateway Token` 값을 다시 넣는다.
+
+### 3. openclaw 신규 버전 업데이트 이후 start 불가한 경우
+
+~/.openclaw/openclaw.json `gateway.controlUi.allowedOrigins` 값 추가하여 대응.
+
+![addAll()](/assets/img/post/2026/openclaw/2026-02-26-issue.png)
+
+
+```json
+  "gateway": {
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://127.0.0.1:18789"
+      ]
+    },
+...
+```
+
 ## 끝!! 이제 신나게 일시키자 🦞
