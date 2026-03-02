@@ -1,5 +1,5 @@
 ---
-title: "OpenClaw Docker Compose 설정 및 브라우저 사용하게 하기"
+title: "🦞 OpenClaw Docker Compose 설정 및 브라우저 사용하게 하기"
 description: "Dockerfile, docker-compose.yml 기반으로 OpenClaw를 빠르게 올리고 브라우저 실행까지 연결하기"
 author: bright-flare
 date: 2026-03-02
