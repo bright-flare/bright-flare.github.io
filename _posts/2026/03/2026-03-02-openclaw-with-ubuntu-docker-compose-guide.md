@@ -11,7 +11,9 @@ image:
 ---
 
 기존에는 Ubuntu 컨테이너에 접속해서 패키지를 한땀한땀 하나씩 설치했습니다. 😭  
-이번에는 `Dockerfile`과 `docker-compose.yml`로 복잡하고 오래 걸리는 설치 과정을 자동화해서, 더 빠르고 간단하게 OpenClaw를 설치하고,  
+
+이번에는 `Dockerfile`과 `docker-compose.yml`로 복잡하고 오래 걸리는 설치 과정을 자동화해서, 더 빠르고 간단하게 OpenClaw를 설치하고,    
+
 🦞 OpenClaw가 브라우저를 사용할수 있도록 하는 방법을 소개합니다 ! 
 
 ## 1) 작업 디렉토리 준비
@@ -23,9 +25,9 @@ cd ~/Documents/openclaw-docker-compose
 
 ## 2) Dockerfile 작성
 
-은근히 오래 걸리는 npm설치시간을 단축하기 위해서 node가 설치되어 있는 node:22-bookworm 이미지를 사용한다.  
+은근히 오래 걸리는 npm설치시간을 단축하기 위해서 node가 설치되어 있는 node:22-bookworm 이미지를 사용합니다.  
 
-기존에 Ubuntu Container에 접속하여 한땀한땀 설치하던 과정을 미리 Dockerfile로 작성하여 재설치시 엄청나게 시간 단축을 할 수 있다 ! 
+기존에 Ubuntu 컨테이너에 접속해 수동으로 패키지를 설치하던 과정을 Dockerfile로 미리 정의해두면, 재설치 시 빌드만으로 동일한 환경을 빠르게 재현할 수 있어 시간을 크게 단축할 수 있습니다.  
 
 ```Dockerfile
 # npm 설치시간 단축을 위해 node:22 이미지 사용
@@ -85,7 +87,7 @@ docker compose up -d --build
 openclaw onboard
 ```
 
-온보딩 순서는 기존과 같다.
+온보딩 순서는 기존과 같습니다 !
 
 온보딩 과정은 이 포스팅에서 더 자세하게 확인 가능합니다.
 - [🦞 OpenClaw Docker Ubuntu Container에 설치해서 더 자유롭게 사용하기 !](https://bright-flare.github.io/posts/openclaw-with-ubuntu-container-guide/)
