@@ -61,6 +61,9 @@ order: 1
 
 ---
 
+## 📄 Certificates
+
+<div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="957c6616-d845-4bba-9b28-17f4608dcf46" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
 
 > **"기록이란 과거 내가 했던 생각이나 사고방식을 엿볼 수 있는 하나의 방법이라고 생각한다."**  
 > **심현섭(밝은불꽃)**
