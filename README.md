@@ -54,6 +54,13 @@ bundle exec jekyll serve
 
 - `_config.yml` 파일에서 사이트 정보, 언어, 테마 등을 원하는 대로 수정할 수 있습니다.
 
+### 6. 로컬 빌드/검증 (GitHub Actions 동일)
+
+```sh
+JEKYLL_ENV=production bundle exec jekyll b -d _site
+bundle exec htmlproofer _site --disable-external --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+```
+
 ---
 
 <br>
@@ -91,4 +98,3 @@ bundle exec jekyll serve
 - [Chirpy 테마 문서](https://chirpy.cotes.page/)
 
 ---
-
