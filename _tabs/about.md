@@ -54,9 +54,17 @@ order: 1
 
 ## 📄 Certificates
 
-<div>
-  <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="957c6616-d845-4bba-9b28-17f4608dcf46" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
+<div class="certificates">
+  <div class="certificate-badge">
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="957c6616-d845-4bba-9b28-17f4608dcf46" data-share-badge-host="https://www.credly.com"></div>
+  </div>
+
+  <div class="certificate-badge">
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a725d126-3b0d-48c8-9296-48a9ce1d7c50" data-share-badge-host="https://www.credly.com"></div>
+  </div>
 </div>
+
+<script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 
 ## 📫 Contact
 - GitHub: [github.com/bright-flare](https://github.com/bright-flare)

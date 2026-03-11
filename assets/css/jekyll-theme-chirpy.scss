@@ -9,3 +9,15 @@
 ';
 
 /* append your custom style below */
+
+.certificates {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.certificate-badge {
+  flex: 0 0 auto;
+}
