@@ -62,7 +62,13 @@ order: 1
   <div class="certificate-badge">
     <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="a725d126-3b0d-48c8-9296-48a9ce1d7c50" data-share-badge-host="https://www.credly.com"></div>
   </div>
+
+  <div class="certificate-badge">
+    <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="4f428f86-efb2-41df-9cbc-5ecfcd6c664a" data-share-badge-host="https://www.credly.com"></div><script type="text/javascript" async src="//cdn.credly.com/assets/utilities/embed.js"></script>
+  </div>
 </div>
+
+
 
 <script type="text/javascript" async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
 
